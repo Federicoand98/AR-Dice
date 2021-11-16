@@ -44,7 +44,13 @@ extern void AnchorCreator_Update_m37BE24FD3C57C8D1CCD9E7A33466231742A8E3A4 (void
 extern void AnchorCreator__ctor_mF2C9E47BDC804A2D50778130F1241088BCD76560 (void);
 // 0x00000010 System.Void AnchorCreator::.cctor()
 extern void AnchorCreator__cctor_mF25A90D54AD45591F5CA5325BBA568E0505B6A08 (void);
-static Il2CppMethodPointer s_methodPointers[16] = 
+// 0x00000011 System.Void Container::Start()
+extern void Container_Start_mBA91F1253D71E1635C4DF23ED885A97BED5DB2D9 (void);
+// 0x00000012 System.Void Container::Update()
+extern void Container_Update_mD2230B4E5AD425CC4A08A746B689FF14B80F16DB (void);
+// 0x00000013 System.Void Container::.ctor()
+extern void Container__ctor_mBF26C4943BFA50AA0839951E3004F955E2E729CA (void);
+static Il2CppMethodPointer s_methodPointers[19] = 
 {
 	ARFeatheredPlaneMeshVisualizer_get_featheringWidth_m0AAD92A3D682C1DFC1B5630585550B6CAFBAFE32,
 	ARFeatheredPlaneMeshVisualizer_set_featheringWidth_m4761377095817FA81908BC43FD08EF600F6CC231,
@@ -62,32 +68,38 @@ static Il2CppMethodPointer s_methodPointers[16] =
 	AnchorCreator_Update_m37BE24FD3C57C8D1CCD9E7A33466231742A8E3A4,
 	AnchorCreator__ctor_mF2C9E47BDC804A2D50778130F1241088BCD76560,
 	AnchorCreator__cctor_mF25A90D54AD45591F5CA5325BBA568E0505B6A08,
+	Container_Start_mBA91F1253D71E1635C4DF23ED885A97BED5DB2D9,
+	Container_Update_mD2230B4E5AD425CC4A08A746B689FF14B80F16DB,
+	Container__ctor_mBF26C4943BFA50AA0839951E3004F955E2E729CA,
 };
-static const int32_t s_InvokerIndices[16] = 
+static const int32_t s_InvokerIndices[19] = 
 {
-	1819,
-	1533,
-	1827,
-	1827,
-	1827,
-	1466,
-	1517,
-	1827,
-	3036,
-	1797,
-	1517,
-	1827,
-	1827,
-	1827,
-	1827,
-	3036,
+	2416,
+	2021,
+	2438,
+	2438,
+	2438,
+	1931,
+	2000,
+	2438,
+	3806,
+	2390,
+	2000,
+	2438,
+	2438,
+	2438,
+	2438,
+	3806,
+	2438,
+	2438,
+	2438,
 };
 extern const CustomAttributesCacheGenerator g_AssemblyU2DCSharp_AttributeGenerators[];
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	16,
+	19,
 	s_methodPointers,
 	0,
 	NULL,

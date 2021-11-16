@@ -8726,14 +8726,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t String_nativeCompareOrdinalEx_mE22F6E
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t TextInfo_CompareOrdinalIgnoreCaseEx_m09B5C40CC607DF4984D90DB06E5B2E442E10ECC9 (String_t* ___strA0, int32_t ___indexA1, String_t* ___strB2, int32_t ___indexB3, int32_t ___lengthA4, int32_t ___lengthB5, const RuntimeMethod* method);
 // System.Int32 System.String::Compare(System.String,System.String,System.StringComparison)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t String_Compare_mDAE9D10BC450FF38960C691874EBFC3EAF6A39DD (String_t* ___strA0, String_t* ___strB1, int32_t ___comparisonType2, const RuntimeMethod* method);
+// System.Int32 System.String::IndexOf(System.String,System.StringComparison)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t String_IndexOf_mD99F5378A4220A0DA0D5097007417E777722ABDA (String_t* __this, String_t* ___value0, int32_t ___comparisonType1, const RuntimeMethod* method);
 // System.Boolean System.String::EndsWith(System.String,System.StringComparison)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_EndsWith_mB6E4F554EB12AF5BB822050E738AB867AF5C9864 (String_t* __this, String_t* ___value0, int32_t ___comparisonType1, const RuntimeMethod* method);
 // System.Int32 System.String::IndexOf(System.Char,System.Int32,System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t String_IndexOf_m3A61B8C27BBED464066C9C13CB540150FEC99A3B (String_t* __this, Il2CppChar ___value0, int32_t ___startIndex1, int32_t ___count2, const RuntimeMethod* method);
 // System.Int32 System.String::IndexOfAny(System.Char[],System.Int32,System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t String_IndexOfAny_m2F49F72E433E32FE4021432592B19EA58B5A28A0 (String_t* __this, CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34* ___anyOf0, int32_t ___startIndex1, int32_t ___count2, const RuntimeMethod* method);
-// System.Int32 System.String::IndexOf(System.String,System.StringComparison)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t String_IndexOf_mD99F5378A4220A0DA0D5097007417E777722ABDA (String_t* __this, String_t* ___value0, int32_t ___comparisonType1, const RuntimeMethod* method);
 // System.Int32 System.String::IndexOf(System.String,System.Int32,System.Int32,System.StringComparison)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t String_IndexOf_m32C80853F9895B0E498AC68FE8BEEF36B058E50E (String_t* __this, String_t* ___value0, int32_t ___startIndex1, int32_t ___count2, int32_t ___comparisonType3, const RuntimeMethod* method);
 // System.Int32 System.Globalization.TextInfo::IndexOfStringOrdinalIgnoreCase(System.String,System.String,System.Int32,System.Int32)
@@ -8910,6 +8910,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StringBuilder_ExpandByABlock_m30CEE07683
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR StringBuilder_t * StringBuilder_Append_m7D5B3033AE7D343BFCB2F762A82A62F512ECC16F (StringBuilder_t * __this, Il2CppChar* ___value0, int32_t ___valueCount1, const RuntimeMethod* method);
 // System.Void System.Text.StringBuilder::AppendHelper(System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StringBuilder_AppendHelper_mAAD57FC10AA9BBF17BA2ACF03B7742F2B978A8C5 (StringBuilder_t * __this, String_t* ___value0, const RuntimeMethod* method);
+// System.String System.Environment::get_NewLine()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Environment_get_NewLine_mD145C8EE917C986BAA7C5243DEFAF4D333C521B4 (const RuntimeMethod* method);
 // System.Void System.Text.StringBuilder::MakeRoom(System.Int32,System.Int32,System.Text.StringBuilder&,System.Int32&,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StringBuilder_MakeRoom_m7038AA71C53BFD09E8B12DBA1F5163060E3E6157 (StringBuilder_t * __this, int32_t ___index0, int32_t ___count1, StringBuilder_t ** ___chunk2, int32_t* ___indexInChunk3, bool ___doneMoveFollowingChars4, const RuntimeMethod* method);
 // System.Void System.Text.StringBuilder::ReplaceInPlaceAtChunk(System.Text.StringBuilder&,System.Int32&,System.Char*,System.Int32)
@@ -16348,6 +16350,76 @@ IL_002d:
 		return L_14;
 	}
 }
+// System.Int32 System.String::CompareOrdinal(System.String,System.Int32,System.String,System.Int32,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t String_CompareOrdinal_m080D376EC2E7A0C528A440094A0DB97DFB34CD41 (String_t* ___strA0, int32_t ___indexA1, String_t* ___strB2, int32_t ___indexB3, int32_t ___length4, const RuntimeMethod* method)
+{
+	{
+		String_t* L_0 = ___strA0;
+		if (!L_0)
+		{
+			goto IL_0006;
+		}
+	}
+	{
+		String_t* L_1 = ___strB2;
+		if (L_1)
+		{
+			goto IL_0013;
+		}
+	}
+
+IL_0006:
+	{
+		String_t* L_2 = ___strA0;
+		String_t* L_3 = ___strB2;
+		if ((!(((RuntimeObject*)(String_t*)L_2) == ((RuntimeObject*)(String_t*)L_3))))
+		{
+			goto IL_000c;
+		}
+	}
+	{
+		return 0;
+	}
+
+IL_000c:
+	{
+		String_t* L_4 = ___strA0;
+		if (!L_4)
+		{
+			goto IL_0011;
+		}
+	}
+	{
+		return 1;
+	}
+
+IL_0011:
+	{
+		return (-1);
+	}
+
+IL_0013:
+	{
+		String_t* L_5 = ___strA0;
+		int32_t L_6 = ___indexA1;
+		String_t* L_7 = ___strB2;
+		int32_t L_8 = ___indexB3;
+		int32_t L_9 = ___length4;
+		int32_t L_10;
+		L_10 = String_nativeCompareOrdinalEx_mE22F6EA686A103B4B35D18793AF30FE8C668D549(L_5, L_6, L_7, L_8, L_9, /*hidden argument*/NULL);
+		return L_10;
+	}
+}
+// System.Boolean System.String::Contains(System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_Contains_mA26BDCCE8F191E8965EB8EEFC18BB4D0F85A075A (String_t* __this, String_t* ___value0, const RuntimeMethod* method)
+{
+	{
+		String_t* L_0 = ___value0;
+		int32_t L_1;
+		L_1 = String_IndexOf_mD99F5378A4220A0DA0D5097007417E777722ABDA(__this, L_0, 4, /*hidden argument*/NULL);
+		return (bool)((((int32_t)((((int32_t)L_1) < ((int32_t)0))? 1 : 0)) == ((int32_t)0))? 1 : 0);
+	}
+}
 // System.Boolean System.String::EndsWith(System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_EndsWith_m9A6011FDF8EBFFD3BCB51FE5BE58BE265116DCBE (String_t* __this, String_t* ___value0, const RuntimeMethod* method)
 {
@@ -17006,6 +17078,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t String_LastIndexOfAny_m84EB34C7448EB6
 		L_2 = String_get_Length_m129FC0ADA02FECBED3C0B1A809AE84A5AEE1CF09_inline(__this, /*hidden argument*/NULL);
 		int32_t L_3;
 		L_3 = String_LastIndexOfAny_m8D3CE5D38D85B77019CDEB4E6BFAC45A6EE200EF(__this, L_0, ((int32_t)il2cpp_codegen_subtract((int32_t)L_1, (int32_t)1)), L_2, /*hidden argument*/NULL);
+		return L_3;
+	}
+}
+// System.Int32 System.String::LastIndexOfAny(System.Char[],System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t String_LastIndexOfAny_mD26613D8310B76952AE97E4F4AE5B3A118AD0219 (String_t* __this, CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34* ___anyOf0, int32_t ___startIndex1, const RuntimeMethod* method)
+{
+	{
+		CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34* L_0 = ___anyOf0;
+		int32_t L_1 = ___startIndex1;
+		int32_t L_2 = ___startIndex1;
+		int32_t L_3;
+		L_3 = String_LastIndexOfAny_m8D3CE5D38D85B77019CDEB4E6BFAC45A6EE200EF(__this, L_0, L_1, ((int32_t)il2cpp_codegen_add((int32_t)L_2, (int32_t)1)), /*hidden argument*/NULL);
 		return L_3;
 	}
 }
@@ -24977,6 +25061,31 @@ IL_0089:
 		L_27 = StringBuilder_Append_m7D5B3033AE7D343BFCB2F762A82A62F512ECC16F(__this, (Il2CppChar*)(Il2CppChar*)((Il2CppChar*)il2cpp_codegen_add((intptr_t)L_24, (intptr_t)((intptr_t)il2cpp_codegen_multiply((intptr_t)((intptr_t)L_25), (int32_t)2)))), L_26, /*hidden argument*/NULL);
 		V_1 = (String_t*)NULL;
 		return __this;
+	}
+}
+// System.Text.StringBuilder System.Text.StringBuilder::AppendLine()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR StringBuilder_t * StringBuilder_AppendLine_mB5790BC98389118626505708AE683AE9257B91B2 (StringBuilder_t * __this, const RuntimeMethod* method)
+{
+	{
+		String_t* L_0;
+		L_0 = Environment_get_NewLine_mD145C8EE917C986BAA7C5243DEFAF4D333C521B4(/*hidden argument*/NULL);
+		StringBuilder_t * L_1;
+		L_1 = StringBuilder_Append_mD02AB0C74C6F55E3E330818C77EC147E22096FB1(__this, L_0, /*hidden argument*/NULL);
+		return L_1;
+	}
+}
+// System.Text.StringBuilder System.Text.StringBuilder::AppendLine(System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR StringBuilder_t * StringBuilder_AppendLine_m4FBF9761747825683B04B18842DF906473EEF7C8 (StringBuilder_t * __this, String_t* ___value0, const RuntimeMethod* method)
+{
+	{
+		String_t* L_0 = ___value0;
+		StringBuilder_t * L_1;
+		L_1 = StringBuilder_Append_mD02AB0C74C6F55E3E330818C77EC147E22096FB1(__this, L_0, /*hidden argument*/NULL);
+		String_t* L_2;
+		L_2 = Environment_get_NewLine_mD145C8EE917C986BAA7C5243DEFAF4D333C521B4(/*hidden argument*/NULL);
+		StringBuilder_t * L_3;
+		L_3 = StringBuilder_Append_mD02AB0C74C6F55E3E330818C77EC147E22096FB1(__this, L_2, /*hidden argument*/NULL);
+		return L_3;
 	}
 }
 // System.Text.StringBuilder System.Text.StringBuilder::Insert(System.Int32,System.String,System.Int32)

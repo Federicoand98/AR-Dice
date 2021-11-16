@@ -2,14 +2,18 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - ARFeatheredPlaneMeshVisualizer
-    - AnchorCreator
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.RiderScriptEditorData
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    Unity.TextMeshPro.dll:
+    - TMPro.TMP_FontAsset
+    - TMPro.TMP_Settings
+    - TMPro.TMP_SpriteAsset
+    - TMPro.TMP_StyleSheet
+    - TMPro.TextMeshProUGUI
     Unity.XR.ARCore.Editor.dll:
     - UnityEditor.XR.ARCore.ARCoreSettings
     Unity.XR.ARFoundation.dll:
-    - UnityEngine.XR.ARFoundation.ARAnchorManager
     - UnityEngine.XR.ARFoundation.ARCameraBackground
     - UnityEngine.XR.ARFoundation.ARCameraManager
     - UnityEngine.XR.ARFoundation.ARInputManager
@@ -36,10 +40,18 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.SpatialTracking.dll:
     - UnityEngine.SpatialTracking.TrackedPoseDriver
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.ContentSizeFitter
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
     UnityEngine.XR.MagicLeap.dll:
     - UnityEngine.XR.MagicLeap.MagicLeapSettings
   sceneClasses:
-    Assets/ExampleAssets/Scenes/SampleScene.unity:
+    Assets/Scenes/MainScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -58,6 +70,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
     - Class: 65
@@ -75,38 +89,70 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1574}
     - Class: 114
+      Script: {instanceID: 1594}
+    - Class: 114
       Script: {instanceID: 1644}
     - Class: 114
       Script: {instanceID: 1726}
     - Class: 114
+      Script: {instanceID: 1916}
+    - Class: 114
+      Script: {instanceID: 2334}
+    - Class: 114
       Script: {instanceID: 2716}
+    - Class: 114
+      Script: {instanceID: 2770}
     - Class: 114
       Script: {instanceID: 2814}
     - Class: 114
+      Script: {instanceID: 2922}
+    - Class: 114
+      Script: {instanceID: 2984}
+    - Class: 114
+      Script: {instanceID: 3186}
+    - Class: 114
+      Script: {instanceID: 3444}
+    - Class: 114
+      Script: {instanceID: 3578}
+    - Class: 114
       Script: {instanceID: 3818}
     - Class: 114
-      Script: {instanceID: 3824}
+      Script: {instanceID: 3822}
     - Class: 114
-      Script: {instanceID: 4082}
+      Script: {instanceID: 4362}
     - Class: 114
-      Script: {instanceID: 4360}
+      Script: {instanceID: 4434}
     - Class: 114
-      Script: {instanceID: 4432}
+      Script: {instanceID: 4592}
     - Class: 114
-      Script: {instanceID: 4590}
+      Script: {instanceID: 4788}
     - Class: 114
-      Script: {instanceID: 4786}
+      Script: {instanceID: 5018}
     - Class: 114
-      Script: {instanceID: 5414}
+      Script: {instanceID: 5406}
     - Class: 114
-      Script: {instanceID: 5606}
+      Script: {instanceID: 5416}
+    - Class: 114
+      Script: {instanceID: 5608}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 225
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
@@ -493,6 +539,12 @@ ScriptsOnlyBuild:
     className: Outline
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Container
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -847,5 +899,5 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   platform: 9
   scenePathNames:
-  - Assets/ExampleAssets/Scenes/SampleScene.unity
+  - Assets/Scenes/MainScene.unity
   playerPath: /Users/federyeeco/Sviluppo/GitHub/AR-Dice/AR-Dice/Build
