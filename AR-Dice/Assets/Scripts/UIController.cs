@@ -10,11 +10,7 @@ public class UIController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         DiceMode.SetActive(true);
-        
-        SlidingMenu.SetActive(false);
-        RectTransform rectMenu = SlidingMenu.GetComponent<RectTransform>();
-        float wSlide = rectMenu.rect.width * .73f;
-        rectMenu.anchoredPosition.Set(-wSlide, 0);
+        SlidingMenu.SetActive(true);
     }
 
     // Update is called once per frame
