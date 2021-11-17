@@ -18,71 +18,71 @@ COMMAND LINE ARGUMENTS:
 -name
 AssetImportWorker0
 -projectPath
-/Users/alexg/Documents/GitHub/AR-Dice/AR-Dice
+/Users/federyeeco/Sviluppo/GitHub/AR-Dice/AR-Dice
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-52340
-Successfully changed project path to: /Users/alexg/Documents/GitHub/AR-Dice/AR-Dice
-/Users/alexg/Documents/GitHub/AR-Dice/AR-Dice
+58696
+Successfully changed project path to: /Users/federyeeco/Sviluppo/GitHub/AR-Dice/AR-Dice
+/Users/federyeeco/Sviluppo/GitHub/AR-Dice/AR-Dice
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 70.93 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 86.42 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.22f1 (e1a7f79fd887)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path /Users/alexg/Documents/GitHub/AR-Dice/AR-Dice/Assets
+[Subsystems] Discovering subsystems at path /Users/federyeeco/Sviluppo/GitHub/AR-Dice/AR-Dice/Assets
 GfxDevice: creating device client; threaded=0
-2021-11-17 18:12:33.463 Unity[7630:239254] Color LCD preferred device: Intel(R) Iris(TM) Plus Graphics 645 (low power)
-2021-11-17 18:12:33.463 Unity[7630:239254] Metal devices available: 1
-2021-11-17 18:12:33.463 Unity[7630:239254] 0: Intel(R) Iris(TM) Plus Graphics 645 (low power)
-2021-11-17 18:12:33.463 Unity[7630:239254] Using device Intel(R) Iris(TM) Plus Graphics 645 (low power)
+2021-11-17 18:17:01.142 Unity[14842:431351] Color LCD preferred device: Intel(R) Iris(TM) Plus Graphics 645 (low power)
+2021-11-17 18:17:01.142 Unity[14842:431351] Metal devices available: 1
+2021-11-17 18:17:01.142 Unity[14842:431351] 0: Intel(R) Iris(TM) Plus Graphics 645 (low power)
+2021-11-17 18:17:01.142 Unity[14842:431351] Using device Intel(R) Iris(TM) Plus Graphics 645 (low power)
 Initializing Metal device caps: Intel(R) Iris(TM) Plus Graphics 645
 Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56630
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56842
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.000506 seconds.
+Registered in 0.000521 seconds.
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 58.56 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 53.64 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.821 seconds
+- Completed reload, in  1.927 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2821ms)
-		BeginReloadAssembly (50ms)
+	ReloadAssembly (1927ms)
+		BeginReloadAssembly (63ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (599ms)
-			LoadAssemblies (50ms)
+		EndReloadAssembly (565ms)
+			LoadAssemblies (62ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (205ms)
+			SetupTypeCache (231ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (41ms)
-			SetupLoadedEditorAssemblies (257ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (213ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (59ms)
-				BeforeProcessingInitializeOnLoad (9ms)
-				ProcessInitializeOnLoadAttributes (138ms)
-				ProcessInitializeOnLoadMethodAttributes (47ms)
+				RefreshPlugins (54ms)
+				BeforeProcessingInitializeOnLoad (10ms)
+				ProcessInitializeOnLoadAttributes (112ms)
+				ProcessInitializeOnLoadMethodAttributes (34ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.007957 seconds.
+Registered in 0.004598 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 45.61 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 54.45 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 CreateSerializedAsset is not supported while importing out-of-process
 UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
@@ -99,12 +99,12 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (
 
 UnityEngine.UnityException: Creating asset at path Assets/XR/Loaders/Magic Leap Loader.asset failed.
   at (wrapper managed-to-native) UnityEditor.AssetDatabase.CreateAsset(UnityEngine.Object,string)
-  at UnityEditor.XR.Management.EditorUtilities.CreateScriptableObjectInstance (System.String typeName, System.String path) [0x00031] in /Users/alexg/Documents/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/EditorUtilities.cs:102 
-  at UnityEditor.XR.Management.XRPackageInitializationBootstrap.InitializeLoaderFromMetadata (System.String packageName, System.Collections.Generic.List`1[T] loaderMetadatas) [0x0004e] in /Users/alexg/Documents/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/XRPackageInitialization.cs:152 
-  at UnityEditor.XR.Management.XRPackageInitializationBootstrap.InitializePackageFromMetadata (UnityEditor.XR.Management.Metadata.IXRPackage package, UnityEditor.XR.Management.Metadata.IXRPackageMetadata packageMetadata) [0x00001] in /Users/alexg/Documents/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/XRPackageInitialization.cs:129 
-  at UnityEditor.XR.Management.XRPackageInitializationBootstrap.InitPackage (UnityEditor.XR.Management.Metadata.IXRPackage package) [0x00030] in /Users/alexg/Documents/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/XRPackageInitialization.cs:118 
-  at UnityEditor.XR.Management.XRPackageInitializationBootstrap.BeginPackageInitialization () [0x0008f] in /Users/alexg/Documents/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/XRPackageInitialization.cs:87 
-  at UnityEditor.XR.Management.XRPackageInitializationBootstrap..cctor () [0x00030] in /Users/alexg/Documents/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/XRPackageInitialization.cs:50 
+  at UnityEditor.XR.Management.EditorUtilities.CreateScriptableObjectInstance (System.String typeName, System.String path) [0x00031] in /Users/federyeeco/Sviluppo/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/EditorUtilities.cs:102 
+  at UnityEditor.XR.Management.XRPackageInitializationBootstrap.InitializeLoaderFromMetadata (System.String packageName, System.Collections.Generic.List`1[T] loaderMetadatas) [0x0004e] in /Users/federyeeco/Sviluppo/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/XRPackageInitialization.cs:152 
+  at UnityEditor.XR.Management.XRPackageInitializationBootstrap.InitializePackageFromMetadata (UnityEditor.XR.Management.Metadata.IXRPackage package, UnityEditor.XR.Management.Metadata.IXRPackageMetadata packageMetadata) [0x00001] in /Users/federyeeco/Sviluppo/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/XRPackageInitialization.cs:129 
+  at UnityEditor.XR.Management.XRPackageInitializationBootstrap.InitPackage (UnityEditor.XR.Management.Metadata.IXRPackage package) [0x00030] in /Users/federyeeco/Sviluppo/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/XRPackageInitialization.cs:118 
+  at UnityEditor.XR.Management.XRPackageInitializationBootstrap.BeginPackageInitialization () [0x0008f] in /Users/federyeeco/Sviluppo/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/XRPackageInitialization.cs:87 
+  at UnityEditor.XR.Management.XRPackageInitializationBootstrap..cctor () [0x00030] in /Users/federyeeco/Sviluppo/GitHub/AR-Dice/AR-Dice/Library/PackageCache/com.unity.xr.management@4.0.7/Editor/XRPackageInitialization.cs:50 
 UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
@@ -114,37 +114,37 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (
 (Filename: /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs Line: 138)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.241 seconds
+- Completed reload, in  1.392 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1242ms)
-		BeginReloadAssembly (157ms)
+	ReloadAssembly (1393ms)
+		BeginReloadAssembly (154ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (24ms)
-		EndReloadAssembly (1018ms)
+		EndReloadAssembly (1173ms)
 			LoadAssemblies (82ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
 			SetupTypeCache (368ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (59ms)
-			SetupLoadedEditorAssemblies (378ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (69ms)
+			SetupLoadedEditorAssemblies (504ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (46ms)
-				BeforeProcessingInitializeOnLoad (72ms)
-				ProcessInitializeOnLoadAttributes (247ms)
-				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (1ms)
+				RefreshPlugins (55ms)
+				BeforeProcessingInitializeOnLoad (99ms)
+				ProcessInitializeOnLoadAttributes (331ms)
+				ProcessInitializeOnLoadMethodAttributes (12ms)
+				AfterProcessingInitializeOnLoad (2ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
 Platform modules already initialized, skipping
-Validating Project structure ... 0.004109 seconds.
+Validating Project structure ... 0.005367 seconds.
 Shader import version has changed; will reimport all shaders...
-Upgrading shader files ...0.021853 seconds.
+Upgrading shader files ...0.020133 seconds.
 Application.AssetDatabase Initial Script Refresh Start
 RefreshInfo: InitialScriptRefreshV2(NoUpdateAssetOptions) scanfilter:  ... 1 filters
 RefreshProfiler: Total: 0.000ms
@@ -154,20 +154,20 @@ Application.AssetDatabase.Refresh End
 RefreshInfo: StopAssetImportingV2(ForceSynchronousImport) scanfilter: 
 RefreshProfiler: Total: 0.000ms
 Launching external process: /Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Tools/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
 Initializing Unity extensions:
-2021-11-17 18:12:39.157 Unity[7630:239254] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x600000ceaca0 Font Asset, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
-2021-11-17 18:12:39.161 Unity[7630:239254] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x600000c14bd0 Font Asset, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+2021-11-17 18:17:05.544 Unity[14842:431351] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x600000d16fb0 Font Asset, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+2021-11-17 18:17:05.548 Unity[14842:431351] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x600000d321b0 Font Asset, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
 ========================================================================
 Worker process is ready to serve import requests
-Refreshing native plugins compatible for Editor in 0.63 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.88 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2302 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 234.2 MB.
-System memory in use after: 233.5 MB.
+Unloading 2303 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 231.0 MB.
+System memory in use after: 230.3 MB.
 
-Unloading 165 unused Assets to reduce memory usage. Loaded Objects now: 2787.
-Total: 3.935720 ms (FindLiveObjects: 0.305434 ms CreateObjectMapping: 0.096713 ms MarkObjects: 3.019632 ms  DeleteObjects: 0.513146 ms)
+Unloading 166 unused Assets to reduce memory usage. Loaded Objects now: 2788.
+Total: 4.816739 ms (FindLiveObjects: 0.468590 ms CreateObjectMapping: 0.145385 ms MarkObjects: 3.508829 ms  DeleteObjects: 0.676207 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -181,17 +181,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/StreamingAssets
-  artifactKey: Guid(f242671b87e03403890423f14b37d107) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/StreamingAssets using Guid(f242671b87e03403890423f14b37d107) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12d46e460c415e258c282be3a7266f2d') in 0.003982 seconds 
-  Import took 0.007126 seconds .
+  path: Assets/Scripts/mauro.cs
+  artifactKey: Guid(413b2dadd1ab54c33885821bf9e61f97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/mauro.cs using Guid(413b2dadd1ab54c33885821bf9e61f97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '619baaf1db1c5d1b4043a7a47e9d2b10') in 0.123574 seconds 
+  Import took 0.128204 seconds .
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000438 seconds.
-  path: Assets/Themes.prefab
-  artifactKey: Guid(168bdd66a01234462ab838189cf8e89e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Themes.prefab using Guid(168bdd66a01234462ab838189cf8e89e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '633f19ab161152d2414962a4c8072650') in 1.328066 seconds 
-  Import took 1.331463 seconds .
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
