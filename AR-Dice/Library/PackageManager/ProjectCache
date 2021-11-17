@@ -13,8 +13,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637726792120000000
-    m_Hash: 1603064841
+      ticks: 637727581560000000
+    m_Hash: 585043104
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -3972,13 +3972,17 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 0.0.1-preview.3
+        - 1.0.0
         - 1.0.1
         compatible:
+        - 0.0.1-preview.3
+        - 1.0.0
         - 1.0.1
         verified: 1.0.1
       dependencies:
       - name: com.unity.subsystemregistration
-        version: 1.0.6
+        version: 1.0.5
       resolvedDependencies:
       - name: com.unity.subsystemregistration
         version: 1.1.0
@@ -4002,13 +4006,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637056471600000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: git@github.cds.internal.unity3d.com:unity/com.unity.xr.interactionsubsystems.git
-        revision: e4d74ea2d737ed36976840f753a2817ef9e4e56d
+        revision: c9d1e6a52c5806d8ec4d9f74ec9eaaf54f07d2c6
         path: 
     - packageId: com.unity.xr.arsubsystems@4.1.7
       testable: 0
@@ -4093,6 +4097,7 @@ m_PackageAssets:
         - 4.2.0-pre.12
         - 4.2.0
         - 4.2.1
+        - 5.0.0-pre.5
         compatible:
         - 4.1.7
         - 4.2.0-pre.2
@@ -4386,6 +4391,7 @@ m_PackageAssets:
         - 1.0.1
         - 1.0.2
         - 1.0.3
+        - 2.0.0
         compatible:
         - 0.1.0-preview.4
         - 0.1.0-preview.8
@@ -4393,6 +4399,7 @@ m_PackageAssets:
         - 1.0.1
         - 1.0.2
         - 1.0.3
+        - 2.0.0
         verified: 1.0.3
       dependencies: []
       resolvedDependencies: []
@@ -4518,8 +4525,18 @@ m_PackageAssets:
       versions:
         all:
         - 1.0.1
+        - 1.1.0-pre.7
+        - 1.1.0-pre.8
+        - 1.1.0-pre.9
+        - 1.1.0-pre.10
+        - 1.1.0-pre.11
         compatible:
         - 1.0.1
+        - 1.1.0-pre.7
+        - 1.1.0-pre.8
+        - 1.1.0-pre.9
+        - 1.1.0-pre.10
+        - 1.1.0-pre.11
         verified: 1.0.1
       dependencies:
       - name: com.unity.modules.unitywebrequest
@@ -4540,7 +4557,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637604883250000000
       documentationUrl: 
       hasRepository: 1
       repository:
