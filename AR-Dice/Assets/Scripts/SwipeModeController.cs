@@ -5,11 +5,22 @@ using UnityEngine;
 public class SwipeModeController {
 
     private GameObject _die;
-    private bool _isThrowed;
-    private bool _throwable;
     private Rigidbody rigidbody;
+
+    private Vector3 startPosition = Vector3.zero;
+    private Vector3 endPosition = Vector3.zero;
+    private Vector3 direction = Vector3.zero;
+    private Vector3 torque = Vector3.zero;
+    
     private float throwForceY = 0.2f;
     private float throwForceZ = 10f;
+    float touchStartTime = 0f;
+    float touchEndTime = 0f;
+    float timeInterval = 0f;
+    
+    private bool _isThrowed;
+    private bool _throwable;
+    bool onTouchHold = false;
 
     public SwipeModeController() {
         this._isThrowed = false;
@@ -17,15 +28,6 @@ public class SwipeModeController {
     }
 
     public void SwipeDie() {
-        Vector3 startPosition = Vector3.zero;
-        Vector3 endPosition = Vector3.zero;
-        Vector3 direction = Vector3.zero;
-        Vector3 torque = Vector3.zero;
-        float touchStartTime = 0f;
-        float touchEndTime = 0f;
-        float timeInterval = 0f;
-        bool onTouchHold = false;
-        
         if (Input.touchCount > 0) {
             Touch touch = Input.GetTouch(0);
             
@@ -36,15 +38,15 @@ public class SwipeModeController {
                 Ray ray = Camera.current.ScreenPointToRay(startPosition);
                 RaycastHit hitObject;
 
-                if (250 >= startPosition.x && startPosition.x <= 650 && 150 <= startPosition.y && startPosition.y <= 550) {
+                if (Physics.Raycast(ray, out hitObject)) {
                     onTouchHold = true;
                     rigidbody.isKinematic = true;
                 }
+                
             }
 
             if (onTouchHold && touch.phase == TouchPhase.Ended) {
                 onTouchHold = false;
-                
                 // Force Detected
                 touchEndTime = Time.time;
                 timeInterval = touchEndTime - touchStartTime;
