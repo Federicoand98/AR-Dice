@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingModeController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
+public class FallingModeController {
+
+    
+    
+    public FallingModeController() {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public void DropDice(int current) {
         
     }
 }
