@@ -36,15 +36,4 @@ public class SlidingMenuController : MonoBehaviour {
         LeanTween.move(thisRect, new Vector3(-600, 0,0), .25f).setOnComplete(ToggleSideButton);
     }
     
-    public void ThemesMenuHand() {
-        
-    }
-    
-    public void PresetMenuHand() {
-        
-    }
-    
-    public void HelpMenuHand() {
-        
-    }
 }

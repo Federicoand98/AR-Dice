@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44407925, g: 0.49333048, b: 0.5723981, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -466,8 +466,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 575969264}
-        m_TargetAssemblyTypeName: DiceMode, Assembly-CSharp
+      - m_Target: {fileID: 1996518006}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: NextDieHand
         m_Mode: 1
         m_Arguments:
@@ -770,8 +770,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 575969264}
-        m_TargetAssemblyTypeName: DiceMode, Assembly-CSharp
+      - m_Target: {fileID: 1996518006}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: PreviousDieHand
         m_Mode: 1
         m_Arguments:
@@ -1118,7 +1118,6 @@ GameObject:
   m_Component:
   - component: {fileID: 575969262}
   - component: {fileID: 575969263}
-  - component: {fileID: 575969264}
   m_Layer: 5
   m_Name: Dice Mode
   m_TagString: Untagged
@@ -1159,18 +1158,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &575969264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575969261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 339dedc0d9d3640dd8a37c1542c81036, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &578392015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,7 +1350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 629ba93fe38ef45cdaf05a85edcb67fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f04600c6c294428ba6df5578d970a3d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1637,7 +1624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f3f89275b7ed44d9da3159a1f4159202, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 629ba93fe38ef45cdaf05a85edcb67fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1664,6 +1651,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 823995856}
+  - component: {fileID: 823995857}
   m_Layer: 0
   m_Name: Settings Controller
   m_TagString: Untagged
@@ -1685,6 +1673,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &823995857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823995855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eaf124e59aa24252b281bce28d7be3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &852993688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1736,13 @@ MonoBehaviour:
   - {fileID: 8311687833818877672, guid: ed76c2b51f4a64c1f934a248290fa5ed, type: 3}
   - {fileID: 4884876147198958281, guid: 13d09facbc6974ed4b162a1c494cebfe, type: 3}
   - {fileID: 5498599897527472690, guid: 3cc7e654c02ec46298f2737263fd80ee, type: 3}
+  diceSprites:
+  - {fileID: 21300000, guid: 629ba93fe38ef45cdaf05a85edcb67fa, type: 3}
+  - {fileID: 21300000, guid: f3f89275b7ed44d9da3159a1f4159202, type: 3}
+  - {fileID: 21300000, guid: 6705a7d2447a54a7db41bc3e5223d24b, type: 3}
+  - {fileID: 21300000, guid: 171c5c5219e194a9d83b31f93dd09216, type: 3}
+  - {fileID: 21300000, guid: 02078c14abdc24feb94ea0f5e22ef530, type: 3}
+  - {fileID: 21300000, guid: 0f04600c6c294428ba6df5578d970a3d, type: 3}
 --- !u!1 &962441927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,8 +2094,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 575969264}
-        m_TargetAssemblyTypeName: DiceMode, Assembly-CSharp
+      - m_Target: {fileID: 1996518006}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: CurrentDieHand
         m_Mode: 1
         m_Arguments:
@@ -3124,7 +3131,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6705a7d2447a54a7db41bc3e5223d24b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3f89275b7ed44d9da3159a1f4159202, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3225,7 +3232,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 575969264}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DiceMode, Assembly-CSharp
         m_MethodName: CollimationModeHand
         m_Mode: 1
@@ -3348,6 +3355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855c6d6b412b744dd9a712b12e02f4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prevButton: {fileID: 223974228}
+  currButton: {fileID: 1114040582}
+  nextButton: {fileID: 40919616}
 --- !u!1 &1996558247
 GameObject:
   m_ObjectHideFlags: 0
@@ -3567,7 +3577,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 575969264}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DiceMode, Assembly-CSharp
         m_MethodName: SwitchModeHand
         m_Mode: 1

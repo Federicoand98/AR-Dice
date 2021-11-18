@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Container : MonoBehaviour {
 
@@ -22,4 +23,6 @@ public class Container : MonoBehaviour {
 
     [SerializeField] public ThrowMode throwMode;
     [SerializeField] public List<GameObject> dice;
+    [SerializeField] public List<Sprite> diceSprites;
+
 }
