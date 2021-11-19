@@ -44,11 +44,9 @@ public class GameController : MonoBehaviour {
         fallingModeController = new FallingModeController();
 
         if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
-            instantiatedDie = Instantiate(dice[currentDie]);
-            swipeModeController.Die = instantiatedDie;
+            SetupSwipeToThrow();
         } else if (Container.instance.throwMode == ThrowMode.FALLING) {
-            pointer.SetActive(true);
-            Destroy(instantiatedDie);
+            SetupFallingDices();
         }
     }
     
@@ -70,13 +68,16 @@ public class GameController : MonoBehaviour {
     }
 
     private void SetupSwipeToThrow() {
+        pointer.SetActive(false);
         instantiatedDie = Instantiate(dice[currentDie]);
+        swipeModeController.Die = instantiatedDie;
     }
     
     private void SetupFallingDices() {
         if (instantiatedDie != null) {
             Destroy(instantiatedDie);
         }
+        
         pointer.SetActive(true);
     }
 

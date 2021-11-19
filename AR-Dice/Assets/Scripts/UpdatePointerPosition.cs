@@ -41,6 +41,8 @@ public class UpdatePointerPosition : MonoBehaviour {
         if (Container.instance.pointerPositionIsValid) {
             gameObject.SetActive(true);
             gameObject.transform.SetPositionAndRotation(Container.instance.pointerPosition.position, Container.instance.pointerPosition.rotation);
+            
+            Debug.Log("\n--------------\n" + gameObject.transform.position + "\n-------------------\n");
         } else {
             gameObject.SetActive(false);
         }
