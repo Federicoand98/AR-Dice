@@ -24,6 +24,8 @@ public class Container : MonoBehaviour {
     [SerializeField] public ThrowMode throwMode;
     [SerializeField] public List<GameObject> dice;
     [SerializeField] public List<Sprite> diceSprites;
+    [SerializeField] public List<Sprite> gameModesSprites;
+    
 
     public Pose pointerPosition;
     public bool pointerPositionIsValid = false;

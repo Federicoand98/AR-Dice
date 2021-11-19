@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] private Button prevButton;
     [SerializeField] private Button currButton;
     [SerializeField] private Button nextButton;
+    [SerializeField] private Button modeButton;
     [SerializeField] private GameObject pointer;
 
     private ARSessionOrigin arOrigin;
@@ -19,6 +20,7 @@ public class GameController : MonoBehaviour {
 
     private List<GameObject> dice;
     private List<Sprite> diceSprites;
+    private List<Sprite> modeSprites;
     private GameObject instantiatedDie;
     private Rigidbody rigidbody;
 
@@ -36,6 +38,7 @@ public class GameController : MonoBehaviour {
 
         dice = Container.instance.dice;
         diceSprites = Container.instance.diceSprites;
+        modeSprites = Container.instance.gameModesSprites;
         
         swipeModeController = new SwipeModeController();
         fallingModeController = new FallingModeController();
@@ -69,6 +72,28 @@ public class GameController : MonoBehaviour {
     private void SetupSwipeToThrow() {
         instantiatedDie = Instantiate(dice[currentDie]);
     }
+    
+    private void SetupFallingDices() {
+        if (instantiatedDie != null) {
+            Destroy(instantiatedDie);
+        }
+        pointer.SetActive(true);
+    }
+
+    public void SwitchThrowModeHand() {
+        if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
+            Container.instance.throwMode = ThrowMode.FALLING;
+            modeButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = modeSprites[1];
+            
+            SetupFallingDices();
+        }
+        else {
+            Container.instance.throwMode = ThrowMode.SWIPE_TO_THROW;
+            modeButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = modeSprites[0];
+            
+            SetupSwipeToThrow();
+        }
+    } 
 
     public void NextDieHand() {
         currentDie++;
@@ -152,10 +177,6 @@ public class GameController : MonoBehaviour {
         else {
             nextButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = diceSprites[currentDie + 1];
         }
-    }
-
-    public void SwitchModeHand() {
-        
     }
 
     public void CollimationModeHand() {

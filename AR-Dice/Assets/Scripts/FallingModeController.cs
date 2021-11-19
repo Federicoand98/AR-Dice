@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingModeController : MonoBehaviour{
+public class FallingModeController : MonoBehaviour {
 
     
     
