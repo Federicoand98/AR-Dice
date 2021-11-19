@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44407925, g: 0.49333048, b: 0.5723981, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1743,6 +1743,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 171c5c5219e194a9d83b31f93dd09216, type: 3}
   - {fileID: 21300000, guid: 02078c14abdc24feb94ea0f5e22ef530, type: 3}
   - {fileID: 21300000, guid: 0f04600c6c294428ba6df5578d970a3d, type: 3}
+  pointerPosition:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+  pointerPositionIsValid: 0
 --- !u!1 &962441927
 GameObject:
   m_ObjectHideFlags: 0
@@ -3297,7 +3301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1963303460
 Transform:
   m_ObjectHideFlags: 0
@@ -3358,6 +3362,7 @@ MonoBehaviour:
   prevButton: {fileID: 223974228}
   currButton: {fileID: 1114040582}
   nextButton: {fileID: 40919616}
+  pointer: {fileID: 0}
 --- !u!1 &1996558247
 GameObject:
   m_ObjectHideFlags: 0
