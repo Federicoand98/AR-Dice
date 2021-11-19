@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] private Button prevButton;
     [SerializeField] private Button currButton;
     [SerializeField] private Button nextButton;
+    [SerializeField] private GameObject pointer;
 
     private ARSessionOrigin arOrigin;
     private ARRaycastManager arRaycastManager;
@@ -43,7 +44,8 @@ public class GameController : MonoBehaviour {
             instantiatedDie = Instantiate(dice[currentDie]);
             swipeModeController.Die = instantiatedDie;
         } else if (Container.instance.throwMode == ThrowMode.FALLING) {
-            
+            pointer.SetActive(true);
+            Destroy(instantiatedDie);
         }
     }
     
@@ -60,7 +62,7 @@ public class GameController : MonoBehaviour {
                 swipeModeController.SwipeDie();
             }
         } else if(Container.instance.throwMode == ThrowMode.FALLING) {
-            
+            // check die result
         }
     }
 
@@ -83,14 +85,12 @@ public class GameController : MonoBehaviour {
 
             swipeModeController.Die = instantiatedDie;
         
-            if (throwable) {
-                Vector3 v = new Vector3(instantiatedDie.transform.position.x, 
-                                            instantiatedDie.transform.position.y, 1f);
-                
+            if (swipeModeController.IsThrowable) {
+                Vector3 v = new Vector3(instantiatedDie.transform.position.x, instantiatedDie.transform.position.y, 1f);
                 instantiatedDie.transform.position = v;
-            } else if (throwed) {
-                throwable = true;
-                throwed = false;
+            } else if (swipeModeController.IsThrowed) {
+                swipeModeController.IsThrowable = true;
+                swipeModeController.IsThrowed = false;
             }
         }
 
@@ -126,14 +126,14 @@ public class GameController : MonoBehaviour {
             
             swipeModeController.Die = instantiatedDie;
         
-            if (throwable) {
+            if (swipeModeController.IsThrowable) {
                 Vector3 v = new Vector3(instantiatedDie.transform.position.x, 
                                             instantiatedDie.transform.position.y, 1f);
                 
                 instantiatedDie.transform.position = v;
-            } else if (throwed) {
-                throwable = true;
-                throwed = false;
+            } else if (swipeModeController.IsThrowed) {
+                swipeModeController.IsThrowable = true;
+                swipeModeController.IsThrowed = false;
             }
         }
 
@@ -163,6 +163,19 @@ public class GameController : MonoBehaviour {
     }
 
     public void CurrentDieHand() {
-        
+        if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
+            // do nothing
+        } else if (Container.instance.throwMode == ThrowMode.FALLING) {
+            if (instantiatedDie != null) {
+                Destroy(instantiatedDie);
+            }
+
+            if (currentDie == 6) {
+                // preset
+                //list = fallingModeController.DropPreset();
+            } else {
+                instantiatedDie = fallingModeController.DropDie(dice[currentDie]);
+            }
+        }
     }
 }

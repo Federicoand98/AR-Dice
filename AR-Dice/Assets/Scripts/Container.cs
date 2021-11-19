@@ -25,4 +25,7 @@ public class Container : MonoBehaviour {
     [SerializeField] public List<GameObject> dice;
     [SerializeField] public List<Sprite> diceSprites;
 
+    public Pose pointerPosition;
+    public bool pointerPositionIsValid = false;
+
 }
