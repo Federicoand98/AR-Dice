@@ -9,8 +9,10 @@ public class GameController : MonoBehaviour {
     [SerializeField] private Button prevButton;
     [SerializeField] private Button currButton;
     [SerializeField] private Button nextButton;
+    [SerializeField] private Button tableButton;
     [SerializeField] private Button modeButton;
     [SerializeField] private GameObject pointer;
+    [SerializeField] private GameObject tableModeController;
 
     private ARSessionOrigin arOrigin;
     private ARRaycastManager arRaycastManager;
@@ -21,8 +23,14 @@ public class GameController : MonoBehaviour {
     private List<GameObject> dice;
     private List<Sprite> diceSprites;
     private List<Sprite> modeSprites;
+    private List<Sprite> tableSprites;
     private GameObject instantiatedDie;
     private Rigidbody rigidbody;
+    private Image previousButtonImage;
+    private Image nextButtonImage;
+    private Image currentButtonImage;
+    private Image tableButtonImage;
+    private Image throwButtonImage;
 
     private int currentDie;
 
@@ -39,6 +47,13 @@ public class GameController : MonoBehaviour {
         dice = Container.instance.dice;
         diceSprites = Container.instance.diceSprites;
         modeSprites = Container.instance.gameModesSprites;
+        tableSprites = Container.instance.tableModeSprites;
+
+        throwButtonImage = modeButton.transform.GetChild(0).gameObject.GetComponent<Image>();
+        tableButtonImage = tableButton.transform.GetChild(0).gameObject.GetComponent<Image>();
+        previousButtonImage = prevButton.transform.GetChild(0).gameObject.GetComponent<Image>();
+        nextButtonImage = nextButton.transform.GetChild(0).gameObject.GetComponent<Image>();
+        currentButtonImage = currButton.transform.GetChild(0).gameObject.GetComponent<Image>();
         
         swipeModeController = new SwipeModeController();
         fallingModeController = new FallingModeController();
@@ -81,22 +96,23 @@ public class GameController : MonoBehaviour {
         pointer.SetActive(true);
     }
 
-    public void SwitchThrowModeHand() {
+    public void OnThrowModeButton() {
+        // aggiungere controllo table mode => non posso cambiare throw mode in table mode
+        
         if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
             Container.instance.throwMode = ThrowMode.FALLING;
-            modeButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = modeSprites[1];
+            throwButtonImage.sprite = modeSprites[1];
             
             SetupFallingDices();
-        }
-        else {
+        } else {
             Container.instance.throwMode = ThrowMode.SWIPE_TO_THROW;
-            modeButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = modeSprites[0];
+            throwButtonImage.sprite = modeSprites[0];
             
             SetupSwipeToThrow();
         }
     } 
 
-    public void NextDieHand() {
+    public void OnNextDieButton() {
         currentDie++;
 
         if (currentDie == dice.Count) {
@@ -121,23 +137,21 @@ public class GameController : MonoBehaviour {
         }
 
         if (currentDie == 0) {
-            prevButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = diceSprites[dice.Count - 1];
-        }
-        else {
-            prevButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = diceSprites[currentDie - 1];
+            previousButtonImage.sprite = diceSprites[dice.Count - 1];
+        } else {
+            previousButtonImage.sprite = diceSprites[currentDie - 1];
         }
 
-        currButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = diceSprites[currentDie];
+        currentButtonImage.sprite = diceSprites[currentDie];
 
         if (currentDie == dice.Count) {
-            nextButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = diceSprites[0];
-        }
-        else {
-            nextButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = diceSprites[currentDie + 1];
+            nextButtonImage.sprite = diceSprites[0];
+        } else {
+            nextButtonImage.sprite = diceSprites[currentDie + 1];
         }
     }
     
-    public void PreviousDieHand() {
+    public void OnPreviousDieButton() {
         currentDie--;
 
         if (currentDie == -1) {
@@ -164,27 +178,21 @@ public class GameController : MonoBehaviour {
         }
 
         if (currentDie == 0) {
-            prevButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = diceSprites[dice.Count - 1];
-        }
-        else {
-            prevButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = diceSprites[currentDie - 1];
+            previousButtonImage.sprite = diceSprites[dice.Count - 1];
+        } else {
+            previousButtonImage.sprite = diceSprites[currentDie - 1];
         }
 
-        currButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = diceSprites[currentDie];
+        currentButtonImage.sprite = diceSprites[currentDie];
 
         if (currentDie == dice.Count) {
-            nextButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = diceSprites[0];
-        }
-        else {
-            nextButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = diceSprites[currentDie + 1];
+            nextButtonImage.sprite = diceSprites[0];
+        } else {
+            nextButtonImage.sprite = diceSprites[currentDie + 1];
         }
     }
 
-    public void CollimationModeHand() {
-        
-    }
-
-    public void CurrentDieHand() {
+    public void OnCurrentDieButton() {
         if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
             // do nothing
         } else if (Container.instance.throwMode == ThrowMode.FALLING) {
@@ -198,6 +206,24 @@ public class GameController : MonoBehaviour {
             } else {
                 instantiatedDie = fallingModeController.DropDie(dice[currentDie]);
             }
+        }
+    }
+
+    public void OnTableModeButton() {
+        if (Container.instance.tableModeIsEnabled) {
+            Container.instance.tableModeIsEnabled = false;
+            tableButtonImage.sprite = tableSprites[0];
+            
+            tableModeController.SetActive(false);
+            // diabilitare i 3 bottoni dei dadi
+            // abilitare i 2 bottoni del table e slider
+        } else {
+            Container.instance.tableModeIsEnabled = true;
+            tableButtonImage.sprite = tableSprites[1];
+
+            tableModeController.SetActive(true);
+            // abilitare i 2 bottoni del table e slider
+            // disabilitare i 3 bottoni dei dadi
         }
     }
 }

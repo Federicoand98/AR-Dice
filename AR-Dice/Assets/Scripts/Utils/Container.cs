@@ -25,9 +25,10 @@ public class Container : MonoBehaviour {
     [SerializeField] public List<GameObject> dice;
     [SerializeField] public List<Sprite> diceSprites;
     [SerializeField] public List<Sprite> gameModesSprites;
-    
+    [SerializeField] public List<Sprite> tableModeSprites;
 
     public Pose pointerPosition;
     public bool pointerPositionIsValid = false;
+    public bool tableModeIsEnabled = false;
 
 }

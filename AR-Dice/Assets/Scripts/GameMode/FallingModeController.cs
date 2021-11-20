@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class FallingModeController : MonoBehaviour {
 
-    
-    
     public FallingModeController() {
         
     }
