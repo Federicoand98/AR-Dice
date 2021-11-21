@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour {
     [SerializeField] private Button modeButton;
     [SerializeField] private GameObject pointer;
     [SerializeField] private GameObject tableModeController;
+    [SerializeField] private GameObject diceChooser;
+    [SerializeField] private GameObject tableButtons;
 
     private ARSessionOrigin arOrigin;
     private ARRaycastManager arRaycastManager;
@@ -213,17 +215,32 @@ public class GameController : MonoBehaviour {
         if (Container.instance.tableModeIsEnabled) {
             Container.instance.tableModeIsEnabled = false;
             tableButtonImage.sprite = tableSprites[0];
-            
+
             tableModeController.SetActive(false);
-            // diabilitare i 3 bottoni dei dadi
-            // abilitare i 2 bottoni del table e slider
+            diceChooser.SetActive(true);
+            tableButtons.SetActive(false);
+            
+            if(Container.instance.tableConstraint)
+                SetupFallingDices();
+            else {
+                modeButton.transform.parent.gameObject.SetActive(true);
+                
+                if(Container.instance.throwMode == ThrowMode.FALLING)
+                    SetupFallingDices();
+                else {
+                    SetupSwipeToThrow();
+                }
+            }
         } else {
             Container.instance.tableModeIsEnabled = true;
             tableButtonImage.sprite = tableSprites[1];
+            if(instantiatedDie != null)
+                Destroy(instantiatedDie);
 
             tableModeController.SetActive(true);
-            // abilitare i 2 bottoni del table e slider
-            // disabilitare i 3 bottoni dei dadi
+            diceChooser.SetActive(false);
+            tableButtons.SetActive(true);
+            modeButton.transform.parent.gameObject.SetActive(false);
         }
     }
 }

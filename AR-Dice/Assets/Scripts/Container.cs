@@ -30,5 +30,6 @@ public class Container : MonoBehaviour {
     public Pose pointerPosition;
     public bool pointerPositionIsValid = false;
     public bool tableModeIsEnabled = false;
+    public bool tableConstraint = false;
 
 }

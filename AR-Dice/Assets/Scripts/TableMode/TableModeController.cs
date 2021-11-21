@@ -39,6 +39,8 @@ public class TableModeController : MonoBehaviour {
         anchors = new List<GameObject>();
         meshes = new List<GameObject>();
         points = new List<Vector3>();
+        
+        slider.SetActive(false);
     }
     
     void Update() {
@@ -166,6 +168,9 @@ public class TableModeController : MonoBehaviour {
             
             meshes.Add(meshPrefabClone);
         }
+        
+        Container.instance.tableConstraint = true;
+        slider.SetActive(true);
     }
     
     private void SelectAnchor() {
@@ -214,6 +219,14 @@ public class TableModeController : MonoBehaviour {
                 meshes[0].GetComponent<MeshCollider>().sharedMesh = mesh;
             }
         }
+    }
+
+    public void OnTrashButton() {
+        points.Clear();
+        anchors.Clear();
+        meshes.Clear();
+
+        Container.instance.tableConstraint = false;
     }
     
     /*
