@@ -75,6 +75,28 @@ public class SwipeModeController {
         }
     }
 
+    public void PickAndSet() {
+        if(Input.touchCount > 0) {
+            Touch touch = Input.GetTouch(0);
+
+            if(touch.phase == TouchPhase.Began) {
+                Vector2 pos = touch.position;
+
+                Ray ray = Camera.current.ScreenPointToRay(pos);
+                RaycastHit hit;
+
+                if(Physics.Raycast(ray, out hit)) {
+                    if(hit.transform.tag.Equals("dice")) {
+                        UpdateDiePosition();
+
+                        _isThrowed = false;
+                        _throwable = true;
+                    }
+                }
+            }
+        }
+    }
+
     public void UpdateDiePosition() {
         _die.transform.position = Camera.current.ViewportToWorldPoint(new Vector3(0.5f, 0.2f, 0.5f));
         _die.transform.rotation = Camera.current.transform.rotation;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.XR.ARFoundation;
 
 public class GameController : MonoBehaviour {
@@ -15,9 +16,12 @@ public class GameController : MonoBehaviour {
     [SerializeField] private GameObject tableModeController;
     [SerializeField] private GameObject diceChooser;
     [SerializeField] private GameObject tableButtons;
+    [SerializeField] private GameObject sessionOrigin;
+    [SerializeField] private GameObject resultView;
 
     private ARSessionOrigin arOrigin;
     private ARRaycastManager arRaycastManager;
+    private ARTogglePlaneDetection arTogglePlaneDetection;
 
     private SwipeModeController swipeModeController;
     private FallingModeController fallingModeController;
@@ -27,7 +31,8 @@ public class GameController : MonoBehaviour {
     private List<Sprite> modeSprites;
     private List<Sprite> tableSprites;
     private GameObject instantiatedDie;
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
+    private TextMeshPro textMeshPro;
     private Image previousButtonImage;
     private Image nextButtonImage;
     private Image currentButtonImage;
@@ -43,6 +48,7 @@ public class GameController : MonoBehaviour {
     void Start() {
         arOrigin = FindObjectOfType<ARSessionOrigin>();
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
+        arTogglePlaneDetection = sessionOrigin.GetComponent<ARTogglePlaneDetection>();
 
         currentDie = 0;
 
@@ -50,6 +56,8 @@ public class GameController : MonoBehaviour {
         diceSprites = Container.instance.diceSprites;
         modeSprites = Container.instance.gameModesSprites;
         tableSprites = Container.instance.tableModeSprites;
+
+        textMeshPro = resultView.transform.GetChild(0).transform.gameObject.GetComponent<TextMeshPro>();
 
         throwButtonImage = modeButton.transform.GetChild(0).gameObject.GetComponent<Image>();
         tableButtonImage = tableButton.transform.GetChild(0).gameObject.GetComponent<Image>();
@@ -68,19 +76,21 @@ public class GameController : MonoBehaviour {
     }
     
     void Update() {
-        if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
-            if (!swipeModeController.IsThrowed) {
-                swipeModeController.UpdateDiePosition();
-            } else {
-                // pick and set
+        if(!Container.instance.tableModeIsEnabled) {
+            if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
+                if (!swipeModeController.IsThrowed) {
+                    swipeModeController.UpdateDiePosition();
+                } else {
+                    swipeModeController.PickAndSet();
+                    // check die result
+                }
+
+                if (swipeModeController.IsThrowable) {
+                    swipeModeController.SwipeDie();
+                }
+            } else if(Container.instance.throwMode == ThrowMode.FALLING) {
                 // check die result
             }
-
-            if (swipeModeController.IsThrowable) {
-                swipeModeController.SwipeDie();
-            }
-        } else if(Container.instance.throwMode == ThrowMode.FALLING) {
-            // check die result
         }
     }
 
@@ -99,18 +109,18 @@ public class GameController : MonoBehaviour {
     }
 
     public void OnThrowModeButton() {
-        // aggiungere controllo table mode => non posso cambiare throw mode in table mode
-        
-        if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
-            Container.instance.throwMode = ThrowMode.FALLING;
-            throwButtonImage.sprite = modeSprites[1];
+        if(!Container.instance.tableConstraint) {
+            if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
+                Container.instance.throwMode = ThrowMode.FALLING;
+                throwButtonImage.sprite = modeSprites[1];
             
-            SetupFallingDices();
-        } else {
-            Container.instance.throwMode = ThrowMode.SWIPE_TO_THROW;
-            throwButtonImage.sprite = modeSprites[0];
+                SetupFallingDices();
+            } else {
+                Container.instance.throwMode = ThrowMode.SWIPE_TO_THROW;
+                throwButtonImage.sprite = modeSprites[0];
             
-            SetupSwipeToThrow();
+                SetupSwipeToThrow();
+            }
         }
     } 
 
@@ -124,8 +134,8 @@ public class GameController : MonoBehaviour {
         if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
             Destroy(instantiatedDie);
             instantiatedDie = Instantiate(dice[currentDie]);
-            rigidbody = instantiatedDie.GetComponent<Rigidbody>();
-            rigidbody.isKinematic = true;
+            rb = instantiatedDie.GetComponent<Rigidbody>();
+            rb.isKinematic = true;
 
             swipeModeController.Die = instantiatedDie;
         
@@ -163,8 +173,8 @@ public class GameController : MonoBehaviour {
         if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
             Destroy(instantiatedDie);
             instantiatedDie = Instantiate(dice[currentDie]);
-            rigidbody = instantiatedDie.GetComponent<Rigidbody>();
-            rigidbody.isKinematic = true;
+            rb = instantiatedDie.GetComponent<Rigidbody>();
+            rb.isKinematic = true;
             
             swipeModeController.Die = instantiatedDie;
         
@@ -219,11 +229,15 @@ public class GameController : MonoBehaviour {
             tableModeController.SetActive(false);
             diceChooser.SetActive(true);
             tableButtons.SetActive(false);
+            pointer.SetActive(false);
+            modeButton.gameObject.SetActive(true);
             
-            if(Container.instance.tableConstraint)
+            if(Container.instance.tableConstraint) {
                 SetupFallingDices();
-            else {
+            } else {
                 modeButton.transform.parent.gameObject.SetActive(true);
+
+                arTogglePlaneDetection.TogglePlaneDetection();
                 
                 if(Container.instance.throwMode == ThrowMode.FALLING)
                     SetupFallingDices();
@@ -240,7 +254,29 @@ public class GameController : MonoBehaviour {
             tableModeController.SetActive(true);
             diceChooser.SetActive(false);
             tableButtons.SetActive(true);
-            modeButton.transform.parent.gameObject.SetActive(false);
+            pointer.SetActive(true);
+            modeButton.gameObject.SetActive(false);
+
+            arTogglePlaneDetection.TogglePlaneDetection();
         }
+    }
+
+    private void CheckDieResult() {
+        DieResult dieResult = null;
+
+        if(Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
+            dieResult = instantiatedDie.GetComponent<DieResult>();
+            textMeshPro.SetText(dieResult.result.ToString());
+
+            StartCoroutine(DisableResultView());
+        } else if(Container.instance.throwMode == ThrowMode.FALLING) {
+
+            // prima bisogna fare i preset
+        }
+    }
+
+    private IEnumerator DisableResultView() {
+        yield return new WaitForSeconds(5);
+        resultView.SetActive(false);
     }
 }

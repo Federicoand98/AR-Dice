@@ -2,13 +2,8 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
-namespace UnityEngine.XR.ARFoundation.Samples
-{
-    /// <summary>
-    /// This plane visualizer demonstrates the use of a feathering effect
-    /// at the edge of the detected plane, which reduces the visual impression
-    /// of a hard edge.
-    /// </summary>
+namespace UnityEngine.XR.ARFoundation.Samples {
+
     [RequireComponent(typeof(ARPlaneMeshVisualizer), typeof(MeshRenderer), typeof(ARPlane))]
     public class ARFeatheredPlaneMeshVisualizer : MonoBehaviour
     {

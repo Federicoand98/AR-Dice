@@ -1340,7 +1340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 1548.8417}
+  m_AnchoredPosition: {x: 0.000061035156, y: 1526}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &77102785
@@ -3318,7 +3318,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: -700}
-  m_SizeDelta: {x: -89.12866, y: 0}
+  m_SizeDelta: {x: -100, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &250549374
 MonoBehaviour:
@@ -5264,6 +5264,7 @@ GameObject:
   - component: {fileID: 388525032}
   - component: {fileID: 388525033}
   - component: {fileID: 388525034}
+  - component: {fileID: 388525035}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -5343,6 +5344,18 @@ MonoBehaviour:
   m_HumanSegmentationDepthMode: 0
   m_EnvironmentDepthMode: 1
   m_OcclusionPreferenceMode: 0
+--- !u!114 &388525035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388525029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc1999ca82024a30af97ebc778642c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &390467982
 GameObject:
   m_ObjectHideFlags: 0
@@ -5749,12 +5762,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2ad4ad44c7847bfa1c896fc33b8660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchorPrefab: {fileID: 0}
-  meshPrefab: {fileID: 0}
-  slider: {fileID: 0}
-  normalMaterial: {fileID: 0}
-  selectedAnchorMaterial: {fileID: 0}
-  deletingAnchorMaterial: {fileID: 0}
+  anchorPrefab: {fileID: 1781163043472834408, guid: aadfdacc6e6b246de843280ff1e90233,
+    type: 3}
+  meshPrefab: {fileID: 6585273983844897249, guid: e0f4146f2952c4f21b557fbaddc15e5f,
+    type: 3}
+  slider: {fileID: 1352330748}
+  normalMaterial: {fileID: 2100000, guid: 6a5938e6bf2284743976f7784f3d7d9e, type: 2}
+  selectedAnchorMaterial: {fileID: 2100000, guid: 0f85ed01d24fd4cfe89261650aec86c1,
+    type: 2}
+  deletingAnchorMaterial: {fileID: 2100000, guid: a2dc2f20ce4b84fd6b8385086dc9f2fb,
+    type: 2}
 --- !u!4 &426404457
 Transform:
   m_ObjectHideFlags: 0
@@ -24435,6 +24452,8 @@ MonoBehaviour:
   tableModeController: {fileID: 426404455}
   diceChooser: {fileID: 1577749883}
   tableButtons: {fileID: 250549372}
+  sessionOrigin: {fileID: 388525029}
+  resultView: {fileID: 0}
 --- !u!1 &1996558247
 GameObject:
   m_ObjectHideFlags: 0

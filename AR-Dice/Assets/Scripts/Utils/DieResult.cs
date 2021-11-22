@@ -10,7 +10,7 @@ public class DieResult : MonoBehaviour {
     [SerializeField] private GameObject beamParticle;
     private static GameObject beamFX;
     private bool beamInstantiated = false;
-    private int result = 1;
+    public int result = 1;
     
     void Start() {
         beamInstantiated = false;

@@ -222,9 +222,20 @@ public class TableModeController : MonoBehaviour {
     }
 
     public void OnTrashButton() {
+        for(int i = meshes.Count - 1; i >= 0; i--) {
+            Destroy(meshes[i]);
+            meshes.RemoveAt(i);
+        }
+
+        for(int i = anchors.Count - 1; i >= 0; i--) {
+            Destroy(anchors[i]);
+            anchors.RemoveAt(i);
+        }
+
         points.Clear();
         anchors.Clear();
         meshes.Clear();
+        lineRenderer.positionCount = 0;
 
         Container.instance.tableConstraint = false;
     }
