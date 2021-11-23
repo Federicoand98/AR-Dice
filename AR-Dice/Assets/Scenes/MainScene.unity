@@ -2751,9 +2751,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1538127096}
-        m_TargetAssemblyTypeName: SlidingMenuController, Assembly-CSharp
-        m_MethodName: PresetMenuHand
+      - m_Target: {fileID: 823995857}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_MethodName: OnPresets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11230,6 +11230,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eaf124e59aa24252b281bce28d7be3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  presets: {fileID: 1871129215}
+  modPreset: {fileID: 1544383236}
+  themes: {fileID: 6937034228041596117}
+  modTheme: {fileID: 0}
+  help: {fileID: 0}
 --- !u!1 &838258242
 GameObject:
   m_ObjectHideFlags: 0
@@ -12216,9 +12221,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1538127096}
-        m_TargetAssemblyTypeName: SlidingMenuController, Assembly-CSharp
-        m_MethodName: ThemesMenuHand
+      - m_Target: {fileID: 823995857}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_MethodName: OnThemes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14901,9 +14906,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1538127096}
-        m_TargetAssemblyTypeName: SlidingMenuController, Assembly-CSharp
-        m_MethodName: HelpMenuHand
+      - m_Target: {fileID: 823995857}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_MethodName: OnHelp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

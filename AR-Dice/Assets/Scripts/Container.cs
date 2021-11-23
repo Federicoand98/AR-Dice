@@ -32,4 +32,7 @@ public class Container : MonoBehaviour {
     public bool tableModeIsEnabled = false;
     public bool tableConstraint = false;
 
+    public Preset activePreset;
+    public Theme activeTheme;
+
 }
