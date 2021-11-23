@@ -12,7 +12,8 @@ public class ARTogglePlaneDetection : MonoBehaviour {
         planeManager = GetComponent<ARPlaneManager>();
     }
 
-    public void TogglePlaneDetection() {
+    public void EnablePlaneDetection(bool enabled) {
+        /*
         planeManager.enabled = !planeManager.enabled;
 
         if(planeManager.enabled) {
@@ -20,6 +21,15 @@ public class ARTogglePlaneDetection : MonoBehaviour {
         } else {
             SetAllPlanesActive(false);
         }
+        */
+
+        if(enabled) {
+            planeManager.enabled = true;
+        } else {
+            planeManager.enabled = false;
+        }
+
+        SetAllPlanesActive(enabled);
     }
 
     private void SetAllPlanesActive(bool enabled) {

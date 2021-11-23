@@ -479,3 +479,7 @@ MonoBehaviour:
   - {fileID: 8814705549027282932}
   - {fileID: 3739618145915166302}
   - {fileID: 5248135492910730860}
+  hitParticle: {fileID: 5807145866197521026, guid: 7a142fe53e5f34de2b667574825add71,
+    type: 3}
+  beamParticle: {fileID: 0}
+  result: 1

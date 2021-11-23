@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1800851653323410940}
   m_Layer: 0
   m_Name: Palo
-  m_TagString: Untagged
+  m_TagString: anchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7167943920271217341}
   m_Layer: 0
   m_Name: Paletto
-  m_TagString: Untagged
+  m_TagString: anchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

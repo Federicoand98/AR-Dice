@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
 public class TableModeController : MonoBehaviour {
@@ -23,6 +24,7 @@ public class TableModeController : MonoBehaviour {
     private GameObject meshPrefabClone;
     private bool selected = false;
     private bool deleting = false;
+    private bool wallBuilded = false;
     private float fixedY;
     private float tempY;
     private int selectedAnchorIndex;
@@ -123,6 +125,8 @@ public class TableModeController : MonoBehaviour {
             Destroy(meshes[i]);
             meshes.RemoveAt(i);
         }
+
+        wallBuilded = false;
     }
 
     public void BuildWalls() {
@@ -168,7 +172,10 @@ public class TableModeController : MonoBehaviour {
             
             meshes.Add(meshPrefabClone);
         }
+
+        tempY = points[0].y;
         
+        wallBuilded = true;
         Container.instance.tableConstraint = true;
         slider.SetActive(true);
     }
@@ -239,31 +246,16 @@ public class TableModeController : MonoBehaviour {
 
         Container.instance.tableConstraint = false;
     }
-    
-    /*
-    public void Collimazione() {
-        if(!collimazioneOn) {
-            collSlider.SetActive(true);
-            collimazioneOn = true;
-
-            tempY = points[0].y;
-
-            collSlider.GetComponent<Slider>().value = 0;
-        }
-        else {
-            collSlider.SetActive(false);
-            collimazioneOn = false;
-        }
-    }
 
     public void SliderValueChange() {
-        if(collimazioneOn) {
-            float newY = collSlider.GetComponent<Slider>().value * .002f;
+        if(wallBuilded) {
+            float newY = slider.GetComponent<Slider>().value * .002f;
 
             for (int i = 0; i < anchors.Count; i++) {
                 anchors[i].transform.position = new Vector3(points[i].x, tempY + newY, points[i].z);
                 points[i] = new Vector3(points[i].x, tempY + newY, points[i].z);
             }
+
             fixedY = tempY + newY;
 
             if (points.Count > 2) {
@@ -274,5 +266,21 @@ public class TableModeController : MonoBehaviour {
             }
         }
     }
-    */
+
+/*
+    public void Collimazione() {
+        if(!collimazioneOn) {
+            slider.SetActive(true);
+            collimazioneOn = true;
+
+            tempY = points[0].y;
+
+            slider.GetComponent<Slider>().value = 0;
+        }
+        else {
+            slider.SetActive(false);
+            collimazioneOn = false;
+        }
+    }
+*/
 }

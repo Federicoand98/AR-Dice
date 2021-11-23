@@ -87,6 +87,8 @@ public class SwipeModeController {
 
                 if(Physics.Raycast(ray, out hit)) {
                     if(hit.transform.tag.Equals("dice")) {
+                        Debug.Log("\n------------\n" + hit.transform.tag + "\n------------\n");
+
                         UpdateDiePosition();
 
                         _isThrowed = false;

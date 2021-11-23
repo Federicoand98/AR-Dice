@@ -194,6 +194,10 @@ MonoBehaviour:
   - {fileID: 7228295829993658648}
   - {fileID: 8062466477796394431}
   - {fileID: 4365578975711578779}
+  hitParticle: {fileID: 5807145866197521026, guid: 7a142fe53e5f34de2b667574825add71,
+    type: 3}
+  beamParticle: {fileID: 0}
+  result: 1
 --- !u!1 &4103686756021132269
 GameObject:
   m_ObjectHideFlags: 0

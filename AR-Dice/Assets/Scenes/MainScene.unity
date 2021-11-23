@@ -7648,7 +7648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SS
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dd3e86e9ac4c64d44838bacb57c73bd8, type: 2}
   m_sharedMaterial: {fileID: 4897341543027527918, guid: dd3e86e9ac4c64d44838bacb57c73bd8,
@@ -7676,7 +7676,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 88
+  m_fontSize: 80
   m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9567,6 +9567,7 @@ GameObject:
   - component: {fileID: 699991610}
   - component: {fileID: 699991612}
   - component: {fileID: 699991611}
+  - component: {fileID: 699991613}
   m_Layer: 5
   m_Name: Result View
   m_TagString: Untagged
@@ -9632,6 +9633,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699991609}
   m_CullTransparentMesh: 1
+--- !u!225 &699991613
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699991609}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -16218,7 +16231,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 426404456}
+        m_TargetAssemblyTypeName: TableModeController, Assembly-CSharp
+        m_MethodName: SliderValueChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1371509523
 GameObject:
   m_ObjectHideFlags: 0
@@ -24453,7 +24478,7 @@ MonoBehaviour:
   diceChooser: {fileID: 1577749883}
   tableButtons: {fileID: 250549372}
   sessionOrigin: {fileID: 388525029}
-  resultView: {fileID: 0}
+  resultView: {fileID: 699991609}
 --- !u!1 &1996558247
 GameObject:
   m_ObjectHideFlags: 0
