@@ -156,7 +156,7 @@ public class PersistanceController {
         }
         else {
             res = new List<int>();
-            SaveDefaultValues(1, 1);
+            SaveDefaultValues(0, 0);
         }
 
         return res;
