@@ -12599,6 +12599,7 @@ MonoBehaviour:
   tableModeSprites:
   - {fileID: 21300000, guid: 85346e1fb14f54d10aad174351d1ad8e, type: 3}
   - {fileID: 21300000, guid: 7f2b473737a63411c8959efbddfcf4cb, type: 3}
+  tableMeshes: []
   pointerPosition:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
@@ -30357,7 +30358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6937034228041596118
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30499,9 +30500,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SlidingMenuController, Assembly-CSharp
-        m_MethodName: CloseMenuHand
+      - m_Target: {fileID: 823995857}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_MethodName: OnCloseThemes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

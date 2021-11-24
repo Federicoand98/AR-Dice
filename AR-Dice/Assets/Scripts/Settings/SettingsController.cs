@@ -86,6 +86,31 @@ public class SettingsController : MonoBehaviour {
         selectedPreset = temp[0];
         selectedTheme = temp[1];
     }
+    
+    private void SetUpThemes() {
+        GameObject cards = themes.transform.GetChild(1).gameObject;
+        for (int i = 0; i < cards.transform.childCount; i++) {
+            GameObject cardN = cards.transform.GetChild(i).gameObject;
+            
+            Image bg = cards.transform.GetChild(0).gameObject.GetComponent<Image>();
+            Image mid = cards.transform.GetChild(1).gameObject.GetComponent<Image>();
+            TextMeshProUGUI text = cards.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>();
+
+            Debug.Log(text);
+
+            bg.color = new Color(themesList[i].numbR, themesList[i].numbG, themesList[i].numbB);
+            mid.color = new Color(themesList[i].dieR, themesList[i].dieG, themesList[i].dieB);
+            
+            if (selectedTheme == i) {
+                cardN.GetComponent<Image>().color = Color.gray;
+                text.color = Color.white;
+            }
+            else {
+                cardN.GetComponent<Image>().color = Color.white;
+                text.color = Color.black;
+            }
+        }
+    }
 
     private void SetUpPresets() {
         GameObject items = presets.transform.GetChild(1).gameObject;
@@ -192,9 +217,13 @@ public class SettingsController : MonoBehaviour {
         
         SetUpPresets();
     }
+
+    
     
     public void OnThemes() {
         themes.SetActive(true);
+        
+        SetUpThemes();
     }
     
     public void OnCloseThemes() {
