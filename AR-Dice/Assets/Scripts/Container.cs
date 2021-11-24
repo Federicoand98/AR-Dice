@@ -27,6 +27,7 @@ public class Container : MonoBehaviour {
     [SerializeField] public List<Sprite> gameModesSprites;
     [SerializeField] public List<Sprite> tableModeSprites;
 
+    public List<GameObject> tableMeshes = new List<GameObject>();
     public Pose pointerPosition;
     public bool pointerPositionIsValid = false;
     public bool tableModeIsEnabled = false;

@@ -52,7 +52,6 @@ public class GameController : MonoBehaviour {
         2 - collider muri
         3 - uscire dalla table mode senza costruire i muri distrugge tutto
         4 - pick to throw lancia il dado, non deve
-        5 - select anchor seleziona sempre il primo anchor, non deve
     */
 
     void Start() {
@@ -91,10 +90,10 @@ public class GameController : MonoBehaviour {
     void Update() {
         if(!Container.instance.tableModeIsEnabled && !Container.instance.tableConstraint) {
             if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
-                if (!swipeModeController.IsThrowed) {
+                if (!swipeModeController.IsThrowed && swipeModeController.IsThrowable) {
                     swipeModeController.UpdateDiePosition();
                     tempResult = 0;
-                } else {
+                } else if(swipeModeController.IsThrowed && !swipeModeController.IsThrowable) {
                     swipeModeController.PickAndSet();
                     CheckDieResult();
                 }
@@ -241,7 +240,7 @@ public class GameController : MonoBehaviour {
 
     public void OnTableModeButton() {
         if (Container.instance.tableModeIsEnabled) {
-            Container.instance.tableModeIsEnabled = false;
+/*             Container.instance.tableModeIsEnabled = false;
             tableButtonImage.sprite = tableSprites[0];
 
             tableModeController.SetActive(false);
@@ -251,9 +250,35 @@ public class GameController : MonoBehaviour {
             modeButton.gameObject.SetActive(true);
 
             if (Container.instance.tableConstraint) {
+
+            } else {
+
+                arTogglePlaneDetection.EnablePlaneDetection(true);
+
+                if (Container.instance.throwMode == ThrowMode.FALLING)
+                    SetupFallingDices();
+                else {
+                    SetupSwipeToThrow();
+                }
+            } */
+
+            tableModeController.SetActive(false);
+            diceChooser.SetActive(true);
+            tableButtons.SetActive(false);
+            pointer.SetActive(false);
+            modeButton.gameObject.SetActive(true);
+
+            if(Container.instance.tableConstraint) {
                 Container.instance.throwMode = ThrowMode.FALLING;
                 SetupFallingDices();
             } else {
+                // popup
+                // prima devi costruire i muri oppure distruggere tutto
+
+                for(int i = Container.instance.tableMeshes.Count - 1; i >= 0; i--) {
+                    Destroy(Container.instance.tableMeshes[i]);
+                    Container.instance.tableMeshes.RemoveAt(i);
+                }
 
                 arTogglePlaneDetection.EnablePlaneDetection(true);
 
@@ -264,6 +289,7 @@ public class GameController : MonoBehaviour {
                 }
             }
 
+            Container.instance.tableModeIsEnabled = false;
         } else {
             Container.instance.tableModeIsEnabled = true;
             tableButtonImage.sprite = tableSprites[1];

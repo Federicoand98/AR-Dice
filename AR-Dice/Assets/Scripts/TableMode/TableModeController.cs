@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
@@ -16,9 +17,11 @@ public class TableModeController : MonoBehaviour {
     private ARSessionOrigin arOrigin;
     private ARRaycastManager arRaycastManager;
 
-    private List<GameObject> anchors;
+    private List<GameObject> vertices;
+
+    //private List<GameObject> anchors;
     private List<GameObject> meshes;
-    private List<Vector3> points;
+    //private List<Vector3> points;
     private MeshDrawer meshDrawer;
     private LineRenderer lineRenderer;
     private GameObject meshPrefabClone;
@@ -38,19 +41,18 @@ public class TableModeController : MonoBehaviour {
         lineRenderer.positionCount = 0;
 
         meshDrawer = new MeshDrawer();
-        anchors = new List<GameObject>();
         meshes = new List<GameObject>();
-        points = new List<Vector3>();
+        vertices = new List<GameObject>();
         
         slider.SetActive(false);
     }
     
     void Update() {
-        if (anchors.Count > 0) {
-            lineRenderer.positionCount = anchors.Count;
+        if (vertices.Count > 0) {
+            lineRenderer.positionCount = vertices.Count;
 
-            for (int i = 0; i < anchors.Count; i++) {
-                lineRenderer.SetPosition(i, anchors[i].transform.position);
+            for (int i = 0; i < vertices.Count; i++) {
+                lineRenderer.SetPosition(i, vertices[i].transform.position);
             }
         }
 
@@ -62,15 +64,13 @@ public class TableModeController : MonoBehaviour {
             UpdateModifiedAnchorPosition();
         }
     }
-    
-    // ottimizzare liste, invece che anchors e points utilizzare una sola lista
 
     public void AddPoint() {
         if (Container.instance.pointerPositionIsValid && !selected) {
             Vector3 position = Container.instance.pointerPosition.position;
             Quaternion rotation = Container.instance.pointerPosition.rotation;
 
-            if (anchors.Count == 0) {
+            if (vertices.Count == 0) {
                 fixedY = position.y;
                 meshPrefabClone = Instantiate(meshPrefab);
                 meshes.Add(meshPrefabClone);
@@ -79,21 +79,23 @@ public class TableModeController : MonoBehaviour {
             position.y = fixedY;
 
             GameObject g = Instantiate(anchorPrefab, position, rotation);
-            g.name = anchors.Count.ToString();
+            g.transform.GetChild(0).name = vertices.Count.ToString();
 
-            anchors.Add(g);
-            points.Add(position);
+            vertices.Add(g);
 
-            if (points.Count > 2) {
+            if (vertices.Count > 2) {
+                List<Vector3> points = vertices.Select(v => v.transform.position).ToList();
                 Mesh mesh = meshDrawer.GetMesh(points);
 
                 meshes[0].GetComponent<MeshFilter>().sharedMesh = mesh;
                 meshes[0].GetComponent<MeshCollider>().sharedMesh = mesh;
             }
+
+            Container.instance.tableMeshes = meshes;
         } else if (Container.instance.pointerPositionIsValid && selected) {
             selected = false;
 
-            Renderer renderer = anchors[selectedAnchorIndex].transform.gameObject.GetComponent<Renderer>();
+            Renderer renderer = vertices[selectedAnchorIndex].transform.gameObject.GetComponent<Renderer>();
             renderer.material = normalMaterial;
         }
     }
@@ -101,20 +103,22 @@ public class TableModeController : MonoBehaviour {
     public void RemovePoint() {
         if (selected) {
             if (deleting) {
-                Destroy(anchors[selectedAnchorIndex]);
-                anchors.RemoveAt(selectedAnchorIndex);
-                points.RemoveAt(selectedAnchorIndex);
+                Destroy(vertices[selectedAnchorIndex]);
+                vertices.RemoveAt(selectedAnchorIndex);
 
+                List<Vector3> points = vertices.Select(v => v.transform.position).ToList();
                 Mesh mesh = meshDrawer.GetMesh(points);
 
                 meshes[0].GetComponent<MeshFilter>().sharedMesh = mesh;
                 meshes[0].GetComponent<MeshCollider>().sharedMesh = mesh;
 
                 deleting = false;
+
+                Container.instance.tableMeshes = meshes;
             } else {
                 deleting = true;
 
-                Renderer renderer = anchors[selectedAnchorIndex].transform.gameObject.GetComponent<Renderer>();
+                Renderer renderer = vertices[selectedAnchorIndex].transform.gameObject.GetComponent<Renderer>();
                 renderer.material = deletingAnchorMaterial;
             }
         }
@@ -126,15 +130,16 @@ public class TableModeController : MonoBehaviour {
             meshes.RemoveAt(i);
         }
 
+        Container.instance.tableMeshes = meshes;
         wallBuilded = false;
     }
 
     public void BuildWalls() {
         RemoveWalls();
 
-        if (anchors.Count > 2) {
-            lineRenderer.positionCount = anchors.Count + 1;
-            lineRenderer.SetPosition(anchors.Count + 1, anchors[0].transform.position);
+        if (vertices.Count > 2) {
+            lineRenderer.positionCount = vertices.Count + 1;
+            lineRenderer.SetPosition(vertices.Count + 1, vertices[0].transform.position);
         } else {
             // show error popup
             return;
@@ -144,17 +149,17 @@ public class TableModeController : MonoBehaviour {
         Vector3 p1, p2, p3, p4;
         Mesh mesh;
 
-        for (int i = 0; i < points.Count; i++) {
+        for (int i = 0; i < vertices.Count; i++) {
             temp.Clear();
 
-            if (i == points.Count - 1) {
-                p1 = points[i];
-                p2 = points[0];
+            if (i == vertices.Count - 1) {
+                p1 = vertices[i].transform.position;
+                p2 = vertices[0].transform.position;
                 p3 = new Vector3(p2.x, p2.y + 0.2f, p2.z);
                 p4 = new Vector3(p1.x, p1.y + 0.2f, p1.z);
             } else {
-                p1 = points[i];
-                p2 = points[i + 1];
+                p1 = vertices[i].transform.position;
+                p2 = vertices[i + 1].transform.position;
                 p3 = new Vector3(p2.x, p2.y + 0.2f, p2.z);
                 p4 = new Vector3(p1.x, p1.y + 0.2f, p1.z);
             }
@@ -173,10 +178,11 @@ public class TableModeController : MonoBehaviour {
             meshes.Add(meshPrefabClone);
         }
 
-        tempY = points[0].y;
+        tempY = vertices[0].transform.position.y;
         
         wallBuilded = true;
         Container.instance.tableConstraint = true;
+        Container.instance.tableMeshes = meshes;
         slider.SetActive(true);
     }
     
@@ -191,15 +197,15 @@ public class TableModeController : MonoBehaviour {
 
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.transform.tag.Equals("anchor")) {
-                    
-                    for (int i = 0; i < anchors.Count; i++) {
-                        if (anchors[i].transform.gameObject.name.Equals(hit.transform.gameObject.name)) {
+
+                    for (int i = 0; i < vertices.Count; i++) {
+                        if (vertices[i].transform.GetChild(0).name.Equals(hit.transform.gameObject.name)) {
                             selectedAnchorIndex = i;
                             break;
                         }
                     }
                     
-                    Renderer renderer = anchors[selectedAnchorIndex].transform.gameObject.GetComponent<Renderer>();
+                    Renderer renderer = vertices[selectedAnchorIndex].transform.gameObject.GetComponent<Renderer>();
 
                     if (selected) {
                         selected = false;
@@ -216,15 +222,17 @@ public class TableModeController : MonoBehaviour {
     private void UpdateModifiedAnchorPosition() {
         if (Container.instance.pointerPositionIsValid) {
             Vector3 temp = Container.instance.pointerPosition.position;
-            anchors[selectedAnchorIndex].transform.position = new Vector3(temp.x, fixedY, temp.z);
-            points[selectedAnchorIndex] = new Vector3(temp.x, fixedY, temp.z);
+            vertices[selectedAnchorIndex].transform.position = new Vector3(temp.x, fixedY, temp.z);
 
-            if (points.Count > 2) {
+            if (vertices.Count > 2) {
+                List<Vector3> points = vertices.Select(p => p.transform.position).ToList();
                 Mesh mesh = meshDrawer.GetMesh(points);
                 
                 meshes[0].GetComponent<MeshFilter>().sharedMesh = mesh;
                 meshes[0].GetComponent<MeshCollider>().sharedMesh = mesh;
             }
+
+            Container.instance.tableMeshes = meshes;
         }
     }
 
@@ -234,36 +242,38 @@ public class TableModeController : MonoBehaviour {
             meshes.RemoveAt(i);
         }
 
-        for(int i = anchors.Count - 1; i >= 0; i--) {
-            Destroy(anchors[i]);
-            anchors.RemoveAt(i);
+        for(int i = vertices.Count - 1; i >= 0; i--) {
+            Destroy(vertices[i]);
+            vertices.RemoveAt(i);
         }
 
-        points.Clear();
-        anchors.Clear();
+        vertices.Clear();
         meshes.Clear();
         lineRenderer.positionCount = 0;
 
         Container.instance.tableConstraint = false;
+        Container.instance.tableMeshes = meshes;
     }
 
     public void SliderValueChange() {
         if(wallBuilded) {
             float newY = slider.GetComponent<Slider>().value * .002f;
 
-            for (int i = 0; i < anchors.Count; i++) {
-                anchors[i].transform.position = new Vector3(points[i].x, tempY + newY, points[i].z);
-                points[i] = new Vector3(points[i].x, tempY + newY, points[i].z);
+            for (int i = 0; i < vertices.Count; i++) {
+                vertices[i].transform.position = new Vector3(vertices[i].transform.position.x, tempY + newY, vertices[i].transform.position.z);
             }
 
             fixedY = tempY + newY;
 
-            if (points.Count > 2) {
+            if (vertices.Count > 2) {
+                List<Vector3> points = vertices.Select(p => p.transform.position).ToList();
                 Mesh mesh = meshDrawer.GetMesh(points);
                 
                 meshes[0].GetComponent<MeshFilter>().sharedMesh = mesh;
                 meshes[0].GetComponent<MeshCollider>().sharedMesh = mesh;
             }
+
+            Container.instance.tableMeshes = meshes;
         }
     }
 }
