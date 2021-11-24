@@ -45,7 +45,15 @@ public class GameController : MonoBehaviour {
 
     private bool throwed = false;
     private bool throwable = true;
-    
+
+    /*
+    DA RISOLVERE: 
+        1 - tasto previous die con preset esplode
+        2 - collider muri
+        3 - uscire dalla table mode senza costruire i muri distrugge tutto
+        4 - pick to throw lancia il dado, non deve
+        5 - select anchor seleziona sempre il primo anchor, non deve
+    */
 
     void Start() {
         arOrigin = FindObjectOfType<ARSessionOrigin>();
@@ -106,6 +114,7 @@ public class GameController : MonoBehaviour {
         pointer.SetActive(false);
         instantiatedDie = Instantiate(dice[currentDie]);
         swipeModeController.Die = instantiatedDie;
+        throwButtonImage.sprite = modeSprites[0];
     }
     
     private void SetupFallingDices() {
@@ -114,19 +123,18 @@ public class GameController : MonoBehaviour {
         }
         
         pointer.SetActive(true);
+        throwButtonImage.sprite = modeSprites[1];
     }
 
     public void OnThrowModeButton() {
         if(!Container.instance.tableConstraint) {
             if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
                 Container.instance.throwMode = ThrowMode.FALLING;
-                throwButtonImage.sprite = modeSprites[1];
-            
+                
                 SetupFallingDices();
             } else {
                 Container.instance.throwMode = ThrowMode.SWIPE_TO_THROW;
-                throwButtonImage.sprite = modeSprites[0];
-            
+
                 SetupSwipeToThrow();
             }
         }
@@ -226,43 +234,35 @@ public class GameController : MonoBehaviour {
                 // preset
                 //list = fallingModeController.DropPreset();
             } else {
-                Debug.Log("\n------------\n" + instantiatedDie + "\n-------\n");
                 instantiatedDie = fallingModeController.DropDie(dice[currentDie]);
-                Debug.Log("\n------------\n" + instantiatedDie + "\n-------\n");
             }
         }
     }
 
     public void OnTableModeButton() {
         if (Container.instance.tableModeIsEnabled) {
-           if(Container.instance.tableConstraint) {
-                Container.instance.tableModeIsEnabled = false;
-                tableButtonImage.sprite = tableSprites[0];
+            Container.instance.tableModeIsEnabled = false;
+            tableButtonImage.sprite = tableSprites[0];
 
-                tableModeController.SetActive(false);
-                diceChooser.SetActive(true);
-                tableButtons.SetActive(false);
-                pointer.SetActive(false);
-                modeButton.gameObject.SetActive(true);
+            tableModeController.SetActive(false);
+            diceChooser.SetActive(true);
+            tableButtons.SetActive(false);
+            pointer.SetActive(false);
+            modeButton.gameObject.SetActive(true);
 
-                if (Container.instance.tableConstraint) {
-                    Container.instance.throwMode = ThrowMode.FALLING;
-                    SetupFallingDices();
-                } else {
-                    modeButton.gameObject.SetActive(true);
-
-                    arTogglePlaneDetection.EnablePlaneDetection(true);
-
-                    if (Container.instance.throwMode == ThrowMode.FALLING)
-                        SetupFallingDices();
-                    else {
-                        SetupSwipeToThrow();
-                    }
-                }
+            if (Container.instance.tableConstraint) {
+                Container.instance.throwMode = ThrowMode.FALLING;
+                SetupFallingDices();
             } else {
-                // popuppino
-            }
 
+                arTogglePlaneDetection.EnablePlaneDetection(true);
+
+                if (Container.instance.throwMode == ThrowMode.FALLING)
+                    SetupFallingDices();
+                else {
+                    SetupSwipeToThrow();
+                }
+            }
 
         } else {
             Container.instance.tableModeIsEnabled = true;

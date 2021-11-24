@@ -266,21 +266,4 @@ public class TableModeController : MonoBehaviour {
             }
         }
     }
-
-/*
-    public void Collimazione() {
-        if(!collimazioneOn) {
-            slider.SetActive(true);
-            collimazioneOn = true;
-
-            tempY = points[0].y;
-
-            slider.GetComponent<Slider>().value = 0;
-        }
-        else {
-            slider.SetActive(false);
-            collimazioneOn = false;
-        }
-    }
-*/
 }
