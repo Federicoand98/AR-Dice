@@ -364,7 +364,10 @@ public class GameController : MonoBehaviour {
     }
 
     private void ChandeDiceMaterial() {
-
+        // controllare se instantiatedDie != null => lui
+        // swipeModeController.Die = instantiatedDie;
+        // controllare se presetInstantiatedDice.Color > 0 => loro
+        // dice
 
 
         Container.instance.themeChanged = false;
