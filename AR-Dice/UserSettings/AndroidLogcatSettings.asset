@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "RZ8R10B5R7N",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "RZ8R10B5R7N",
+        "name": "com.ARDiceInc.ARDice",
+        "processId": 28142,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -17,32 +17,44 @@
         {
             "deviceId": "RZ8R10B5R7N",
             "name": "com.ARDiceInc.ARDice",
-            "processId": 1658,
+            "processId": 14045,
             "exited": true
         },
         {
             "deviceId": "RZ8R10B5R7N",
             "name": "com.ARDiceInc.ARDice",
-            "processId": 6578,
+            "processId": 14733,
             "exited": true
         },
         {
             "deviceId": "RZ8R10B5R7N",
             "name": "com.ARDiceInc.ARDice",
-            "processId": 10423,
+            "processId": 15036,
             "exited": true
         },
         {
             "deviceId": "RZ8R10B5R7N",
             "name": "com.ARDiceInc.ARDice",
-            "processId": 13662,
+            "processId": 18863,
             "exited": true
         },
         {
             "deviceId": "RZ8R10B5R7N",
             "name": "com.ARDiceInc.ARDice",
-            "processId": 16258,
+            "processId": 21366,
             "exited": true
+        },
+        {
+            "deviceId": "RZ8R10B5R7N",
+            "name": "com.ARDiceInc.ARDice",
+            "processId": 26596,
+            "exited": false
+        },
+        {
+            "deviceId": "RZ8R10B5R7N",
+            "name": "com.ARDiceInc.ARDice",
+            "processId": 28142,
+            "exited": false
         }
     ],
     "m_Tags": {

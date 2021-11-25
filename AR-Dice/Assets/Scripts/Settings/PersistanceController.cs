@@ -103,18 +103,8 @@ public class PersistanceController {
         return res;
     }
 
-    public List<Preset> ResetPresets(){
-        DeleteAllPresets();
-        return LoadAllPresets();
-    }
-    
-    public List<Theme> ResetThemes(){
-        DeleteAllThemes();
-        return LoadAllThemes();
-    }
-
     private void DeleteAllPresets() {
-        for(int i = 1; i <= 7; i++){
+        for(int i = 1; i <= presetNumb; i++){
             string path = Application.persistentDataPath + "/preset" + i + ".dice";
             if(File.Exists(path))
                 File.Delete(path);
@@ -122,7 +112,7 @@ public class PersistanceController {
     }
     
     private void DeleteAllThemes() {
-        for(int i = 1; i <= 7; i++){
+        for(int i = 1; i <= themeNumb; i++){
             string path = Application.persistentDataPath + "/theme" + i + ".dice";
             if(File.Exists(path))
                 File.Delete(path);
@@ -160,5 +150,26 @@ public class PersistanceController {
         }
 
         return res;
+    }
+
+    private void DeleteDefaultValues() {
+        string path = Application.persistentDataPath + "/default.dice";
+        if(File.Exists(path))
+            File.Delete(path);
+    }
+    
+    public List<Preset> ResetPresets(){
+        DeleteAllPresets();
+        return LoadAllPresets();
+    }
+    
+    public List<Theme> ResetThemes(){
+        DeleteAllThemes();
+        return LoadAllThemes();
+    }
+
+    public List<int> ResetDefaultValues() {
+        DeleteDefaultValues();
+        return LoadDefaultValues();
     }
 }
