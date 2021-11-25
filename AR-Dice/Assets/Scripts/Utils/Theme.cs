@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable] public class Theme {
 
@@ -11,9 +12,9 @@ using System.Collections.Generic;
     private float _numbB;
 
     public Theme() {
-        _dieR = 0f;
-        _dieG = 0f;
-        _dieB = 0f;
+        _dieR = .345f;
+        _dieG = .345f;
+        _dieB = .345f;
 
         _numbR = 1f;
         _numbG = 1f;
@@ -49,4 +50,34 @@ using System.Collections.Generic;
         get => _numbB;
         set => _numbB = value;
     }
+
+    public void SetDieColor(Color color) {
+        _dieR = color.r;
+        _dieG = color.g;
+        _dieB = color.b;
+    }
+    
+    public void SetNumbColor(Color color) {
+        _numbR = color.r;
+        _numbG = color.g;
+        _numbB = color.b;
+    }
+
+    public Color GetDieColor() {
+        return new Color(_dieR, _dieG, _dieB);
+    }
+    
+    public Color GetNumbColor() {
+        return new Color(_numbR, _numbG, _numbB);
+    }
+
+    /*
+    public Material GetDieMaterial() {
+        // to do
+    }
+    
+    public Material GetNumbMaterial() {
+        // to do
+    }
+    */
 }

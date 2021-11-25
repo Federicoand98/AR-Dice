@@ -22,10 +22,15 @@ public class SettingsController : MonoBehaviour {
     private int selectedTheme;      // 0-n
     
     private int modifyPresNumb;
-    private int modifyThemeNumb;
     private List<TextMeshProUGUI> modifyPresetNumbersTexts;
+    
+    private int modifyThemeNumb;
+    private bool toggleColorChange;
+    private Image dieNumber;
+    private Image dieColor;
 
     private int presetTouched;
+    private int themeTouched;
     private bool pressingButton;
     private float touchStartTime;
     private float touchThreshold = .5f;
@@ -35,7 +40,7 @@ public class SettingsController : MonoBehaviour {
         presets.SetActive(false);
         modPreset.SetActive(false);
         themes.SetActive(false);
-        //modTheme.SetActive(false);
+        modTheme.SetActive(false);
         //help.SetActive(false);
 
         modifyPresNumb = -1;
@@ -49,6 +54,20 @@ public class SettingsController : MonoBehaviour {
         modifyPresetNumbersTexts = new List<TextMeshProUGUI>();
 
         presetTouched = -1;
+        themeTouched = -1;
+    }
+    
+    private void LoadFiles() {
+        presetList = persistanceController.LoadAllPresets();
+        //presetList = persistanceController.ResetPresets());
+        
+        themesList = persistanceController.LoadAllThemes();
+        //themesList = persistanceController.ResetThemes();
+        
+        List<int> temp = persistanceController.LoadDefaultValues();
+        //List<int> temp = persistanceController.ResetDefaultValues();
+        selectedPreset = temp[0];
+        selectedTheme = temp[1];
     }
 
     private void Update() {
@@ -65,49 +84,30 @@ public class SettingsController : MonoBehaviour {
         touchStartTime = Time.time;
     }
     
+    public void OnThemeClick(int i) {
+        pressingButton = true;
+        themeTouched = i;
+
+        touchStartTime = Time.time;
+    }
+    
     private void CheckThreshold() {
         if (currTouch.phase == TouchPhase.Ended) {
             pressingButton = false;
-            OnSelectPreset(presetTouched);
+            if(presetTouched >= 0)
+                OnSelectPreset(presetTouched);
+            else if (themeTouched >= 0)
+                OnSelectTheme(themeTouched);
         }
         else {
             if (Time.time - touchStartTime > touchThreshold) {
                 pressingButton = false;
-                OnModifyPreset(presetTouched);
+                if(presetTouched >= 0)
+                    OnModifyPreset(presetTouched);
+                else if(themeTouched >= 0)
+                    OnModifyTheme(themeTouched);
+                
                 Vibration.Vibrate(100);
-            }
-        }
-    }
-
-    private void LoadFiles() {
-        presetList = persistanceController.LoadAllPresets();
-        themesList = persistanceController.LoadAllThemes();
-        List<int> temp = persistanceController.LoadDefaultValues();
-        selectedPreset = temp[0];
-        selectedTheme = temp[1];
-    }
-    
-    private void SetUpThemes() {
-        GameObject cards = themes.transform.GetChild(1).gameObject;
-        for (int i = 0; i < cards.transform.childCount; i++) {
-            GameObject cardN = cards.transform.GetChild(i).gameObject;
-            
-            Image bg = cards.transform.GetChild(0).gameObject.GetComponent<Image>();
-            Image mid = cards.transform.GetChild(1).gameObject.GetComponent<Image>();
-            TextMeshProUGUI text = cards.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>();
-
-            Debug.Log(text);
-
-            bg.color = new Color(themesList[i].numbR, themesList[i].numbG, themesList[i].numbB);
-            mid.color = new Color(themesList[i].dieR, themesList[i].dieG, themesList[i].dieB);
-            
-            if (selectedTheme == i) {
-                cardN.GetComponent<Image>().color = Color.gray;
-                text.color = Color.white;
-            }
-            else {
-                cardN.GetComponent<Image>().color = Color.white;
-                text.color = Color.black;
             }
         }
     }
@@ -165,6 +165,7 @@ public class SettingsController : MonoBehaviour {
     }
     
     private void OnSelectPreset(int k) {
+        presetTouched = -1;
         selectedPreset = k;
         Container.instance.activePreset = presetList[selectedPreset];
         
@@ -174,6 +175,7 @@ public class SettingsController : MonoBehaviour {
     }
 
     public void OnModifyPreset(int numb) {
+        presetTouched = -1;
         modifyPresNumb = numb;
         modPreset.SetActive(true);
         
@@ -187,7 +189,6 @@ public class SettingsController : MonoBehaviour {
         for (int i = 0; i < modifyPresetNumbersTexts.Count; i++) {
             modifyPresetNumbersTexts[i].SetText(presetList[modifyPresNumb].GetIndex(i).ToString());
         }
-        
     }
 
     public void OnPlusButton(int k) {
@@ -218,8 +219,6 @@ public class SettingsController : MonoBehaviour {
         SetUpPresets();
     }
 
-    
-    
     public void OnThemes() {
         themes.SetActive(true);
         
@@ -229,19 +228,89 @@ public class SettingsController : MonoBehaviour {
     public void OnCloseThemes() {
         themes.SetActive(false);
     }
+    
+    private void SetUpThemes() {
+        GameObject cards = themes.transform.GetChild(1).gameObject;
+        for (int i = 0; i < cards.transform.childCount; i++) {
+            GameObject cardN = cards.transform.GetChild(i).gameObject;
+            
+            Image number = cardN.transform.GetChild(0).gameObject.GetComponent<Image>();
+            Image die = cardN.transform.GetChild(1).gameObject.GetComponent<Image>();
+            TextMeshProUGUI text = cardN.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>();
+
+            number.color = themesList[i].GetNumbColor();
+            die.color = themesList[i].GetDieColor();
+            
+            if (selectedTheme == i) {
+                cardN.GetComponent<Image>().color = Color.gray;
+                text.color = Color.white;
+            }
+            else {
+                cardN.GetComponent<Image>().color = Color.white;
+                text.color = Color.black;
+            }
+        }
+    }
 
     public void OnModifyTheme(int numb) {
+        presetTouched = -1;
         modifyThemeNumb = numb;
+        toggleColorChange = false;
         modTheme.SetActive(true);
+
+        // set theme number text
+        TextMeshProUGUI themeText = modTheme.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        themeText.SetText("Theme " + (modifyThemeNumb+1));
+
+        GameObject preview = modTheme.transform.GetChild(1).transform.GetChild(0).gameObject;
+        dieNumber = preview.transform.GetChild(0).GetComponent<Image>();
+        dieColor = preview.transform.GetChild(1).GetComponent<Image>();
+
+        dieNumber.color = themesList[modifyThemeNumb].GetNumbColor();
+        dieColor.color = themesList[modifyThemeNumb].GetDieColor();
+    }
+    
+    private void OnSelectTheme(int k) {
+        themeTouched = -1;
+        selectedTheme = k;
+        Container.instance.activeTheme = themesList[selectedTheme];
         
-        // etc
+        SetUpThemes();
+        
+        persistanceController.SaveDefaultValues(selectedPreset, selectedTheme);
+    }
+
+    public void OnColorChange(Color color) {
+        if(!toggleColorChange)
+            OnDieColorChange(color);
+        else 
+            OnNumbColorChange(color);
+    }
+
+    private void OnDieColorChange(Color color) {
+        dieColor.color = color;
+        themesList[modifyThemeNumb].SetDieColor(color);
+    }
+    
+    private void OnNumbColorChange(Color color) {
+        dieNumber.color = color;
+        themesList[modifyThemeNumb].SetNumbColor(color);
+    }
+
+    public void OnToggleColorChange() {
+        if (toggleColorChange)
+            toggleColorChange = false;
+        else
+            toggleColorChange = true;
     }
 
     public void OnCloseModifyTheme() {
-        // save
+        persistanceController.SaveTheme(themesList[modifyThemeNumb], modifyThemeNumb+1);
         
         modTheme.SetActive(false);
-        modifyThemeNumb = 0;
+        modifyThemeNumb = -1;
+        
+        SetUpThemes();
     }
 
     public void OnHelp() {
