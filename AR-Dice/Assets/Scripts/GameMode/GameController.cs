@@ -108,7 +108,7 @@ public class GameController : MonoBehaviour {
         }
 
         if(Container.instance.themeChanged) {
-            ChandeDiceMaterial();
+            SetDiceMaterial();
         }
     }
 
@@ -363,12 +363,37 @@ public class GameController : MonoBehaviour {
         resultView.SetActive(false);
     }
 
-    private void ChandeDiceMaterial() {
-        // controllare se instantiatedDie != null => lui
-        // swipeModeController.Die = instantiatedDie;
-        // controllare se presetInstantiatedDice.Color > 0 => loro
-        // dice
+    private void SetDiceMaterial() {
+        Debug.Log("Setting Material:");
+        Theme currTheme = Container.instance.activeTheme;
+        
+        Material die = Container.instance.themeDie;
+        Material numb = Container.instance.themeNumber;
+        die.color = currTheme.GetDieColor();
+        numb.color = currTheme.GetNumbColor();
+        
+        if (instantiatedDie != null) {
+            Debug.Log("----Inst die: ...");
+            MeshRenderer mr = instantiatedDie.GetComponent<MeshRenderer>();
+            mr.materials[0] = die;
+            mr.materials[1] = numb;
 
+            swipeModeController.Die = instantiatedDie;
+        }
+
+        if (presetInstantiatedDice.Count > 0) {
+            foreach (GameObject currDie in presetInstantiatedDice) {
+                MeshRenderer mr = currDie.GetComponent<MeshRenderer>();
+                mr.materials[0] = die;
+                mr.materials[1] = numb;
+            }
+        }
+
+        foreach (GameObject currDie in dice) {
+            MeshRenderer mr = currDie.GetComponent<MeshRenderer>();
+            mr.materials[0] = die;
+            mr.materials[1] = numb;
+        }
 
         Container.instance.themeChanged = false;
     }

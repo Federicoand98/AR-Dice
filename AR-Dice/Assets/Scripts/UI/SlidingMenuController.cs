@@ -32,7 +32,6 @@ public class SlidingMenuController : MonoBehaviour {
     }
 
     public void CloseMenuHand() {
-        Debug.Log("chiudi stammerda");
         LeanTween.move(thisRect, new Vector3(-600, 0,0), .25f).setOnComplete(ToggleSideButton);
     }
     

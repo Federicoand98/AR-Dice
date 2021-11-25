@@ -27,6 +27,8 @@ public class Container : MonoBehaviour {
     [SerializeField] public List<Sprite> gameModesSprites;
     [SerializeField] public List<Sprite> tableModeSprites;
     [SerializeField] public Sprite presetSprite;
+    [SerializeField] public Material themeDie;  //base without color
+    [SerializeField] public Material themeNumber;  //base without color
 
     public List<GameObject> tableMeshes = new List<GameObject>();
     public Pose pointerPosition;

@@ -13431,6 +13431,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 85346e1fb14f54d10aad174351d1ad8e, type: 3}
   - {fileID: 21300000, guid: 7f2b473737a63411c8959efbddfcf4cb, type: 3}
   presetSprite: {fileID: 21300000, guid: 0a7f0f4c9ed6b467b801d42bb1d721c4, type: 3}
+  themeDie: {fileID: 2100000, guid: 6b2463fb1de4e47968fd7fb4cd6bc564, type: 2}
+  themeNumber: {fileID: 2100000, guid: a5026703f73384460b82991bac8d3495, type: 2}
   tableMeshes: []
   pointerPosition:
     position: {x: 0, y: 0, z: 0}
@@ -21765,7 +21767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1538127093
 RectTransform:
   m_ObjectHideFlags: 0

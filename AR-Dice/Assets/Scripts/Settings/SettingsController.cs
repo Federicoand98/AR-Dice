@@ -50,6 +50,7 @@ public class SettingsController : MonoBehaviour {
 
         Container.instance.activePreset = presetList[selectedPreset];
         Container.instance.activeTheme = themesList[selectedTheme];
+        Container.instance.themeChanged = true;
 
         modifyPresetNumbersTexts = new List<TextMeshProUGUI>();
 
@@ -274,6 +275,7 @@ public class SettingsController : MonoBehaviour {
         themeTouched = -1;
         selectedTheme = k;
         Container.instance.activeTheme = themesList[selectedTheme];
+        Container.instance.themeChanged = true;
         
         SetUpThemes();
         
