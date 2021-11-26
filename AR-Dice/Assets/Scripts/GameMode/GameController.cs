@@ -375,8 +375,10 @@ public class GameController : MonoBehaviour {
         if (instantiatedDie != null) {
             Debug.Log("----Inst die: ...");
             MeshRenderer mr = instantiatedDie.GetComponent<MeshRenderer>();
-            mr.materials[0] = die;
-            mr.materials[1] = numb;
+            mr.materials.SetValue(die, 0);
+            mr.materials.SetValue(numb, 1);
+            //mr.materials[0] = die;
+            //mr.materials[1] = numb;
 
             swipeModeController.Die = instantiatedDie;
         }

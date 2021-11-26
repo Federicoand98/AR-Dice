@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RZ8R10B5R7N",
         "name": "com.ARDiceInc.ARDice",
-        "processId": 17163,
+        "processId": 10825,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -48,6 +48,12 @@
             "deviceId": "RZ8R10B5R7N",
             "name": "com.ARDiceInc.ARDice",
             "processId": 17163,
+            "exited": false
+        },
+        {
+            "deviceId": "RZ8R10B5R7N",
+            "name": "com.ARDiceInc.ARDice",
+            "processId": 10825,
             "exited": false
         }
     ],
