@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "RZ8R10B5R7N",
     "m_SelectedPackage": {
-        "deviceId": "RZ8R10B5R7N",
-        "name": "com.ARDiceInc.ARDice",
-        "processId": 10825,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -13,24 +13,6 @@
             "name": "com.teslacoilsw.launcher",
             "processId": 15486,
             "exited": false
-        },
-        {
-            "deviceId": "RZ8R10B5R7N",
-            "name": "com.ARDiceInc.ARDice",
-            "processId": 21366,
-            "exited": true
-        },
-        {
-            "deviceId": "RZ8R10B5R7N",
-            "name": "com.ARDiceInc.ARDice",
-            "processId": 26596,
-            "exited": true
-        },
-        {
-            "deviceId": "RZ8R10B5R7N",
-            "name": "com.ARDiceInc.ARDice",
-            "processId": 28142,
-            "exited": true
         },
         {
             "deviceId": "RZ8R10B5R7N",
@@ -48,13 +30,19 @@
             "deviceId": "RZ8R10B5R7N",
             "name": "com.ARDiceInc.ARDice",
             "processId": 17163,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "RZ8R10B5R7N",
             "name": "com.ARDiceInc.ARDice",
             "processId": 10825,
-            "exited": false
+            "exited": true
+        },
+        {
+            "deviceId": "RZ8R10B5R7N",
+            "name": "com.ARDiceInc.ARDice",
+            "processId": 19647,
+            "exited": true
         }
     ],
     "m_Tags": {

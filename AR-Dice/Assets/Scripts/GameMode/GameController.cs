@@ -367,36 +367,9 @@ public class GameController : MonoBehaviour {
         Debug.Log("Setting Material:");
         Theme currTheme = Container.instance.activeTheme;
         
-        Material die = Container.instance.themeDie;
-        Material numb = Container.instance.themeNumber;
-        die.color = currTheme.GetDieColor();
-        numb.color = currTheme.GetNumbColor();
+        Container.instance.themeDie.color = currTheme.GetDieColor();
+        Container.instance.themeNumber.color = currTheme.GetNumbColor();
         
-        if (instantiatedDie != null) {
-            Debug.Log("----Inst die: ...");
-            MeshRenderer mr = instantiatedDie.GetComponent<MeshRenderer>();
-            mr.materials.SetValue(die, 0);
-            mr.materials.SetValue(numb, 1);
-            //mr.materials[0] = die;
-            //mr.materials[1] = numb;
-
-            swipeModeController.Die = instantiatedDie;
-        }
-
-        if (presetInstantiatedDice.Count > 0) {
-            foreach (GameObject currDie in presetInstantiatedDice) {
-                MeshRenderer mr = currDie.GetComponent<MeshRenderer>();
-                mr.materials[0] = die;
-                mr.materials[1] = numb;
-            }
-        }
-
-        foreach (GameObject currDie in dice) {
-            MeshRenderer mr = currDie.GetComponent<MeshRenderer>();
-            mr.materials[0] = die;
-            mr.materials[1] = numb;
-        }
-
         Container.instance.themeChanged = false;
     }
 }
