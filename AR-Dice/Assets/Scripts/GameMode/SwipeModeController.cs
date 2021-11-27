@@ -39,10 +39,11 @@ public class SwipeModeController {
                 RaycastHit hitObject;
 
                 if (Physics.Raycast(ray, out hitObject)) {
-                    onTouchHold = true;
-                    rigidbody.isKinematic = true;
+                    if(hitObject.transform.tag.Equals("dice")) {
+                        onTouchHold = true;
+                        rigidbody.isKinematic = true;
+                    }
                 }
-                
             }
 
             if (onTouchHold && touch.phase == TouchPhase.Ended) {
@@ -69,13 +70,15 @@ public class SwipeModeController {
                 rigidbody.AddForce(xForce, yForce, zForce);
                 rigidbody.AddTorque(torque);
 
+                Debug.Log("\n-----------\nlancio\n----------\n");
+
                 _isThrowed = true;
                 _throwable = false;
             }
         }
     }
 
-    public void PickAndSet() {
+    public bool PickAndSet() {
         if(Input.touchCount > 0) {
             Touch touch = Input.GetTouch(0);
 
@@ -90,13 +93,15 @@ public class SwipeModeController {
                         UpdateDiePosition();
 
                         rigidbody.isKinematic = true;
-
                         _isThrowed = false;
-                        _throwable = true;
+
+                        return true;
                     }
                 }
             }
         }
+
+        return false;
     }
 
     public void UpdateDiePosition() {

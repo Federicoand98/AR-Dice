@@ -11,6 +11,7 @@ public class DieResult : MonoBehaviour {
     private static GameObject beamFX;
     private bool beamInstantiated = false;
     public int result = 1;
+    public bool availableResult = false;
     
     void Start() {
         beamInstantiated = false;
@@ -32,6 +33,7 @@ public class DieResult : MonoBehaviour {
 
     private void OnCollisionStay(Collision other) {
         CheckDieResult();
+        availableResult = true;
 
         ContactPoint contact = other.contacts[0];
         Quaternion rotation = Quaternion.Euler(-90, 0, 0);
@@ -45,6 +47,10 @@ public class DieResult : MonoBehaviour {
         if (beamInstantiated) {
             beamFX.transform.position = position;
         }
+    }
+
+    private void OnCollisionExit(Collision other) {
+        availableResult = false;    
     }
 
     private void OnDestroy() {

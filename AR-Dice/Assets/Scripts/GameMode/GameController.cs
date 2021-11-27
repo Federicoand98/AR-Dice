@@ -91,7 +91,10 @@ public class GameController : MonoBehaviour {
                     swipeModeController.UpdateDiePosition();
                     tempResult = 0;
                 } else if(swipeModeController.IsThrowed && !swipeModeController.IsThrowable) {
-                    swipeModeController.PickAndSet();
+                    if(swipeModeController.PickAndSet()) {
+                        StartCoroutine(DelayedThrowable());
+                    }
+
                     CheckDieResult();
                 }
 
@@ -182,18 +185,11 @@ public class GameController : MonoBehaviour {
         if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
             Destroy(instantiatedDie);
             instantiatedDie = Instantiate(dice[currentDie]);
-            rb = instantiatedDie.GetComponent<Rigidbody>();
-            rb.isKinematic = true;
             
             swipeModeController.Die = instantiatedDie;
-        
-            if (swipeModeController.IsThrowable) {
-                Vector3 v = new Vector3(instantiatedDie.transform.position.x, instantiatedDie.transform.position.y, 1f);
-                instantiatedDie.transform.position = v;
-            } else if (swipeModeController.IsThrowed) {
-                swipeModeController.IsThrowable = true;
-                swipeModeController.IsThrowed = false;
-            }
+            swipeModeController.IsThrowed = false;
+            swipeModeController.IsThrowable = true;
+            swipeModeController.UpdateDiePosition();
         }
 
         if(Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
@@ -235,9 +231,9 @@ public class GameController : MonoBehaviour {
 
     public void OnCurrentDieButton() {
         if (Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
-            swipeModeController.UpdateDiePosition();
             swipeModeController.IsThrowed = false;
             swipeModeController.IsThrowable = true;
+            swipeModeController.UpdateDiePosition();
         } else if (Container.instance.throwMode == ThrowMode.FALLING) {
             tempResult = 0;
 
@@ -311,15 +307,22 @@ public class GameController : MonoBehaviour {
     private void CheckDieResult() {
         if(Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
             DieResult dieResult = instantiatedDie.GetComponent<DieResult>();
-            SetDieResult(dieResult);
+
+            if(dieResult.availableResult) {
+                SetDieResult(dieResult);
+            }
         } else if(Container.instance.throwMode == ThrowMode.FALLING) {
 
             if(currentDie == dice.Count) {
                 List<DieResult> results = presetInstantiatedDice.Select(d => d.GetComponent<DieResult>()).ToList();
+
                 SetDiceResults(results);
             } else {
                 DieResult dieResult = instantiatedDie.GetComponent<DieResult>();
-                SetDieResult(dieResult);
+
+                if(dieResult.availableResult) {
+                    SetDieResult(dieResult);
+                }
             }
         }
     }
@@ -338,12 +341,17 @@ public class GameController : MonoBehaviour {
 
     private void SetDiceResults(List<DieResult> results) {
         int totalResult = 0;
+        bool available = false;
 
         foreach(DieResult result in results) {
             totalResult += result.result;
+
+            if(result.availableResult) {
+                available = true;
+            }
         }
 
-        if(totalResult != tempResult) {
+        if(totalResult != tempResult && available) {
             resultView.SetActive(true);
             LeanTween.alphaCanvas(canvasGroup, 1f, 0f);
             textMeshPro.SetText(totalResult.ToString());
@@ -371,5 +379,10 @@ public class GameController : MonoBehaviour {
         Container.instance.themeNumber.color = currTheme.GetNumbColor();
         
         Container.instance.themeChanged = false;
+    }
+
+    private IEnumerator DelayedThrowable() {
+        yield return new WaitForSeconds(0.2f);
+        swipeModeController.IsThrowable = true;
     }
 }

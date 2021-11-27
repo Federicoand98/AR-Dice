@@ -19,7 +19,7 @@ public class FallingModeController : MonoBehaviour {
         torque.z = Random.Range(-200, 200);
 
         res = Instantiate(currentDie, v, Container.instance.pointerPosition.rotation);
-        res.transform.rotation = Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
+        res.transform.rotation = Quaternion.Euler(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
 
         Rigidbody rb = res.GetComponent<Rigidbody>();
         rb.isKinematic = false;
