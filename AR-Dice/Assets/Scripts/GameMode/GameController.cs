@@ -117,8 +117,14 @@ public class GameController : MonoBehaviour {
 
     private void SetupSwipeToThrow() {
         pointer.SetActive(false);
+        
+        if(instantiatedDie != null) {
+            Destroy(instantiatedDie);
+        }
+
         instantiatedDie = Instantiate(dice[currentDie]);
         swipeModeController.Die = instantiatedDie;
+        swipeModeController.UpdateDiePosition();
         throwButtonImage.sprite = modeSprites[0];
     }
     
@@ -381,7 +387,7 @@ public class GameController : MonoBehaviour {
     }
 
     private IEnumerator DelayedThrowable() {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         swipeModeController.IsThrowable = true;
     }
 }
