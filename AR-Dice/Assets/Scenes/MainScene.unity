@@ -14150,20 +14150,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "INTRODUCTION:\n\nAR Dice is an augmented reality application that allows
-    yaou to roll dice.\n\nGAME MODE:\nThis is the default mode in which the application
-    is started up, in which it is possible to roll the dice very simply. In this
-    mode, the Augmented Reality engine continuously detects surfaces and walls, therefore
-    vertical and horizontal planes, making them interact with the objects in play.\nIn
-    Game Mode there are 2 launch modes:\n    - Swipe to throw: the die is thrown
-    by swiping it, and then the die completes a parabola that starts from the lower
-    part of the smartphone display and arrives in the AR environment\n    - Falling
-    Die: in this mode there will be a pointer on the plane, whose position is given
-    by an estimate of the depth. Pressing the large button at the bottom center will
-    make it fall vertically in proximity to the pointer.\nTo change launch mode you
-    need to use the button at the top center.\nIt is also possible to change the
-    dice to be thrown using the appropriate buttons positioned at the bottom, on
-    the sides of the launch key.\n\n\nTABLE MODE:\nThe Table Mode is an advanced
+  m_text: "<b>INTRODUCTION:</b>\n\nAR Dice is an augmented reality application that
+    allows yaou to roll dice.\n\nGAME MODE:\nThis is the default mode in which the
+    application is started up, in which it is possible to roll the dice very simply.
+    In this mode, the Augmented Reality engine continuously detects surfaces and
+    walls, therefore vertical and horizontal planes, making them interact with the
+    objects in play.\nIn Game Mode there are 2 launch modes:\n    - Swipe to throw:
+    the die is thrown by swiping it, and then the die completes a parabola that starts
+    from the lower part of the smartphone display and arrives in the AR environment\n   
+    - Falling Die: in this mode there will be a pointer on the plane, whose position
+    is given by an estimate of the depth. Pressing the large button at the bottom
+    center will make it fall vertically in proximity to the pointer.\nTo change launch
+    mode you need to use the button at the top center.\nIt is also possible to change
+    the dice to be thrown using the appropriate buttons positioned at the bottom,
+    on the sides of the launch key.\n\n\nTABLE MODE:\nThe Table Mode is an advanced
     mode that allows you to build your own horizontal plane at will.\nThis mode is
     accessible by pressing the key at the top right.\nAs soon as TableMode is enabled,
     all automatically constructed plans will be destroyed.\nIn this way the user,

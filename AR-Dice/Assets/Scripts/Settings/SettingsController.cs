@@ -145,11 +145,17 @@ public class SettingsController : MonoBehaviour {
     
     public void OnPresets() {
         presets.SetActive(true);
-
+        RectTransform rect = presets.GetComponent<RectTransform>();
+        rect.Translate(new Vector3(-rect.rect.width, 0));
+        
+        LeanTween.move(rect, Vector3.zero, .2f);
         SetUpPresets();
     }
 
     public void OnClosePresets() {
+        RectTransform rect = presets.GetComponent<RectTransform>();
+        
+        LeanTween.move(rect, new Vector3(-rect.rect.width, 0), .2f);
         presets.SetActive(false);
     }
     
@@ -222,11 +228,17 @@ public class SettingsController : MonoBehaviour {
 
     public void OnThemes() {
         themes.SetActive(true);
+        RectTransform rect = themes.GetComponent<RectTransform>();
+        rect.Translate(new Vector3(-rect.rect.width, 0));
         
+        LeanTween.move(rect, Vector3.zero, .2f);
         SetUpThemes();
     }
     
     public void OnCloseThemes() {
+        RectTransform rect = themes.GetComponent<RectTransform>();
+        
+        LeanTween.move(rect, new Vector3(-rect.rect.width, 0), .2f);
         themes.SetActive(false);
     }
     
@@ -317,9 +329,16 @@ public class SettingsController : MonoBehaviour {
 
     public void OnHelp() {
         help.SetActive(true);
+        RectTransform rect = help.GetComponent<RectTransform>();
+        rect.Translate(new Vector3(-rect.rect.width, 0));
+        
+        LeanTween.move(rect, Vector3.zero, .2f);
     }
     
     public void OnCloseHelp() {
+        RectTransform rect = help.GetComponent<RectTransform>();
+        
+        LeanTween.move(rect, new Vector3(-rect.rect.width, 0), .2f);
         help.SetActive(false);
     }
 }
