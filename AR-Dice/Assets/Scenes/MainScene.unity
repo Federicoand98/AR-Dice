@@ -7763,7 +7763,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 823995857}
         m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
-        m_MethodName: OnCloseModifyTheme
+        m_MethodName: OnCloseHelp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13469,7 +13469,7 @@ MonoBehaviour:
   modPreset: {fileID: 1544383236}
   themes: {fileID: 6937034228041596117}
   modTheme: {fileID: 2140124038}
-  help: {fileID: 0}
+  help: {fileID: 98756239}
 --- !u!1 &838258242
 GameObject:
   m_ObjectHideFlags: 0
@@ -14127,8 +14127,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 366.50003, y: -2744.8}
-  m_SizeDelta: {x: 700, y: 5489.6}
+  m_AnchoredPosition: {x: 366.50003, y: -1650}
+  m_SizeDelta: {x: 700, y: 3300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &883343486
 MonoBehaviour:
@@ -14150,64 +14150,36 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Winston Smith is a low-ranking member of the ruling Party in London, in
-    the nation of Oceania. Everywhere Winston goes, even his own home, the Party
-    watches him through telescreens; everywhere he looks he sees the face of the
-    Party\u2019s seemingly omniscient leader, a figure known only as Big Brother.
-    The Party controls everything in Oceania, even the people\u2019s history and
-    language. Currently, the Party is forcing the implementation of an invented language
-    called Newspeak, which attempts to prevent political rebellion by eliminating
-    all words related to it. Even thinking rebellious thoughts is illegal. Such thoughtcrime
-    is, in fact, the worst of all crimes.\n\nAs the novel opens, Winston feels frustrated
-    by the oppression and rigid control of the Party, which prohibits free thought,
-    sex, and any expression of individuality. Winston dislikes the party and has
-    illegally purchased a diary in which to write his criminal thoughts. He has also
-    become fixated on a powerful Party member named O\u2019Brien, whom Winston believes
-    is a secret member of the Brotherhood\u2014the mysterious, legendary group that
-    works to overthrow the Party.\n\nWinston works in the Ministry of Truth, where
-    he alters historical records to fit the needs of the Party. He notices a coworker,
-    a beautiful dark-haired girl, staring at him, and worries that she is an informant
-    who will turn him in for his thoughtcrime. He is troubled by the Party\u2019s
-    control of history: the Party claims that Oceania has always been allied with
-    Eastasia in a war against Eurasia, but Winston seems to recall a time when this
-    was not true. The Party also claims that Emmanuel Goldstein, the alleged leader
-    of the Brotherhood, is the most dangerous man alive, but this does not seem plausible
-    to Winston. Winston spends his evenings wandering through the poorest neighborhoods
-    in London, where the proletarians, or proles, live squalid lives, relatively
-    free of Party monitoring.\n\nOne day, Winston receives a note from the dark-haired
-    girl that reads \u201CI love you.\u201D She tells him her name, Julia, and they
-    begin a covert affair, always on the lookout for signs of Party monitoring. Eventually
-    they rent a room above the secondhand store in the prole district where Winston
-    bought the diary. This relationship lasts for some time. Winston is sure that
-    they will be caught and punished sooner or later (the fatalistic Winston knows
-    that he has been doomed since he wrote his first diary entry), while Julia is
-    more pragmatic and optimistic. As Winston\u2019s affair with Julia progresses,
-    his hatred for the Party grows more and more intense. At last, he receives the
-    message that he has been waiting for: O\u2019Brien wants to see him.\n\nWinston
-    and Julia travel to O\u2019Brien\u2019s luxurious apartment. As a member of the
-    powerful Inner Party (Winston belongs to the Outer Party), O\u2019Brien leads
-    a life of luxury that Winston can only imagine. O\u2019Brien confirms to Winston
-    and Julia that, like them, he hates the Party, and says that he works against
-    it as a member of the Brotherhood. He indoctrinates Winston and Julia into the
-    Brotherhood, and gives Winston a copy of Emmanuel Goldstein\u2019s book, the
-    manifesto of the Brotherhood. Winston reads the book\u2014an amalgam of several
-    forms of class-based twentieth-century social theory\u2014to Julia in the room
-    above the store. Suddenly, soldiers barge in and seize them. Mr. Charrington,
-    the proprietor of the store, is revealed as having been a member of the Thought
-    Police all along.\n\nTorn away from Julia and taken to a place called the Ministry
-    of Love, Winston finds that O\u2019Brien, too, is a Party spy who simply pretended
-    to be a member of the Brotherhood in order to trap Winston into committing an
-    open act of rebellion against the Party. O\u2019Brien spends months torturing
-    and brainwashing Winston, who struggles to resist. At last, O\u2019Brien sends
-    him to the dreaded Room 101, the final destination for anyone who opposes the
-    Party. Here, O\u2019Brien tells Winston that he will be forced to confront his
-    worst fear. Throughout the novel, Winston has had recurring nightmares about
-    rats; O\u2019Brien now straps a cage full of rats onto Winston\u2019s head and
-    prepares to allow the rats to eat his face. Winston snaps, pleading with O\u2019Brien
-    to do it to Julia, not to him.\n\nGiving up Julia is what O\u2019Brien wanted
-    from Winston all along. His spirit broken, Winston is released to the outside
-    world. He meets Julia but no longer feels anything for her. He has accepted the
-    Party entirely and has learned to love Big Brother."
+  m_text: "INTRODUCTION:\n\nAR Dice is an augmented reality application that allows
+    yaou to roll dice.\n\nGAME MODE:\nThis is the default mode in which the application
+    is started up, in which it is possible to roll the dice very simply. In this
+    mode, the Augmented Reality engine continuously detects surfaces and walls, therefore
+    vertical and horizontal planes, making them interact with the objects in play.\nIn
+    Game Mode there are 2 launch modes:\n    - Swipe to throw: the die is thrown
+    by swiping it, and then the die completes a parabola that starts from the lower
+    part of the smartphone display and arrives in the AR environment\n    - Falling
+    Die: in this mode there will be a pointer on the plane, whose position is given
+    by an estimate of the depth. Pressing the large button at the bottom center will
+    make it fall vertically in proximity to the pointer.\nTo change launch mode you
+    need to use the button at the top center.\nIt is also possible to change the
+    dice to be thrown using the appropriate buttons positioned at the bottom, on
+    the sides of the launch key.\n\n\nTABLE MODE:\nThe Table Mode is an advanced
+    mode that allows you to build your own horizontal plane at will.\nThis mode is
+    accessible by pressing the key at the top right.\nAs soon as TableMode is enabled,
+    all automatically constructed plans will be destroyed.\nIn this way the user,
+    through a pointer positioned based on an estimate of depth and surfaces,\nHe
+    can select the vertices of the surface he wants to build, and once this is done,
+    clicking the button at the bottom center will finalize the currently constructed
+    floor by creating walls around the perimeter.\nIt is also possible to move a
+    vertex by simply clicking on it and then it is possible to confirm it by pressing
+    the add vertex button.\n    - Build: button to build walls, clickable only if
+    there are at least 3 points\n    - +: key to add a vertex\n    - -: key to remove
+    a vertex, double tap to confirm\n    - Trash: key to delete the newly built surface\n   
+    - Save: button to save the newly built floor and return to game mode, if the
+    walls have not been built it is not clickable\n\nPRESETS:\nYou can change and
+    save your presets to be used in falling dice mode.\n\nTHEMES:\nThis settings
+    page can let you modify the colors of your dice. Tap the number to swich from
+    the number to the die color."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 524030bcb7ea841e680212fbeb6539c5, type: 2}
   m_sharedMaterial: {fileID: 5979622137648365038, guid: 524030bcb7ea841e680212fbeb6539c5,
@@ -16398,7 +16370,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 5489.6}
+  m_SizeDelta: {x: 0, y: 3300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1089488219
 MonoBehaviour:

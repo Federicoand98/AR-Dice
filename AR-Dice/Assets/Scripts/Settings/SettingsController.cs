@@ -41,7 +41,7 @@ public class SettingsController : MonoBehaviour {
         modPreset.SetActive(false);
         themes.SetActive(false);
         modTheme.SetActive(false);
-        //help.SetActive(false);
+        help.SetActive(false);
 
         modifyPresNumb = -1;
         modifyThemeNumb = -1;
@@ -320,6 +320,6 @@ public class SettingsController : MonoBehaviour {
     }
     
     public void OnCloseHelp() {
-        help.SetActive(true);
+        help.SetActive(false);
     }
 }

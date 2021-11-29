@@ -372,7 +372,6 @@ public class GameController : MonoBehaviour {
     }
 
     private void SetDiceMaterial() {
-        Debug.Log("Setting Material:");
         Theme currTheme = Container.instance.activeTheme;
         
         Container.instance.themeDie.color = currTheme.GetDieColor();
