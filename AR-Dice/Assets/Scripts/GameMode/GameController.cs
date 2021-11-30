@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] private GameObject tableButtons;
     [SerializeField] private GameObject sessionOrigin;
     [SerializeField] private GameObject resultView;
+    [SerializeField] private GameObject popupGameObject;
 
     private ARSessionOrigin arOrigin;
     private ARRaycastManager arRaycastManager;
@@ -35,7 +36,7 @@ public class GameController : MonoBehaviour {
     private Sprite presetSprite;
     private GameObject instantiatedDie;
     private Rigidbody rb;
-    private CanvasGroup canvasGroup;
+    private CanvasGroup resultCanvasGroup;
     private TextMeshProUGUI textMeshPro;
     private Image previousButtonImage;
     private Image nextButtonImage;
@@ -63,9 +64,9 @@ public class GameController : MonoBehaviour {
         presetSprite = Container.instance.presetSprite;
 
         textMeshPro = resultView.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
-        canvasGroup = resultView.gameObject.GetComponent<CanvasGroup>();
+        resultCanvasGroup = resultView.gameObject.GetComponent<CanvasGroup>();
         resultView.SetActive(true);
-        LeanTween.alphaCanvas(canvasGroup, 0f, 0f);
+        LeanTween.alphaCanvas(resultCanvasGroup, 0f, 0f);
 
         throwButtonImage = modeButton.transform.GetChild(0).gameObject.GetComponent<Image>();
         tableButtonImage = tableButton.transform.GetChild(0).gameObject.GetComponent<Image>();
@@ -336,7 +337,7 @@ public class GameController : MonoBehaviour {
     private void SetDieResult(DieResult dieResult) {
         if(dieResult.result != tempResult) {
             resultView.SetActive(true);
-            LeanTween.alphaCanvas(canvasGroup, 1f, 0f);
+            LeanTween.alphaCanvas(resultCanvasGroup, 1f, 0f);
             textMeshPro.SetText(dieResult.result.ToString());
 
             StartCoroutine(ShowResultView());
@@ -359,7 +360,7 @@ public class GameController : MonoBehaviour {
 
         if(totalResult != tempResult && available) {
             resultView.SetActive(true);
-            LeanTween.alphaCanvas(canvasGroup, 1f, 0f);
+            LeanTween.alphaCanvas(resultCanvasGroup, 1f, 0f);
             textMeshPro.SetText(totalResult.ToString());
 
             StartCoroutine(ShowResultView());
@@ -370,7 +371,7 @@ public class GameController : MonoBehaviour {
 
     private IEnumerator ShowResultView() {
         yield return new WaitForSeconds(3);
-        LeanTween.alphaCanvas(canvasGroup, 0f, 1f).setOnComplete(DisableResult);
+        LeanTween.alphaCanvas(resultCanvasGroup, 0f, 1f).setOnComplete(DisableResult);
     }
 
     private void DisableResult() {

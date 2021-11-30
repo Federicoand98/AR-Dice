@@ -32,7 +32,6 @@ public class SwipeModeController {
             Touch touch = Input.GetTouch(0);
             
             if(touch.phase == TouchPhase.Began) {
-                Debug.Log("\n-----------\ntouchphase began\n----------\n");
                 startPosition = touch.position;
                 touchStartTime = Time.time;
 
@@ -43,7 +42,6 @@ public class SwipeModeController {
                     if(hitObject.transform.tag.Equals("dice")) {
                         onTouchHold = true;
                         rigidbody.isKinematic = true;
-                        Debug.Log("\n-----------\n" + hitObject.transform.tag + "\n" + onTouchHold + "\n----------\n");
                     }
                 }
             }
@@ -71,8 +69,6 @@ public class SwipeModeController {
                 rigidbody.isKinematic = false;
                 rigidbody.AddForce(xForce, yForce, zForce);
                 rigidbody.AddTorque(torque);
-
-                Debug.Log("\n-----------\nlancio\n----------\n");
 
                 _isThrowed = true;
                 _throwable = false;

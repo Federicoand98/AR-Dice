@@ -17,6 +17,7 @@ public class Container : MonoBehaviour {
         }
 
         instance = this;
+        errorDictionary.Add("del_anchor", "Tap again to delete the anchor");
     }
 
     #endregion
@@ -29,6 +30,7 @@ public class Container : MonoBehaviour {
     [SerializeField] public Sprite presetSprite;
     [SerializeField] public Material themeDie;  //base without color
     [SerializeField] public Material themeNumber;  //base without color
+    [SerializeField] public Dictionary<string, string> errorDictionary = new Dictionary<string, string>();
 
     public List<GameObject> tableMeshes = new List<GameObject>();
     public Pose pointerPosition;

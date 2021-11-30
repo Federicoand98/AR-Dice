@@ -13,15 +13,13 @@ public class TableModeController : MonoBehaviour {
     [SerializeField] private Material normalMaterial;
     [SerializeField] private Material selectedAnchorMaterial;
     [SerializeField] private Material deletingAnchorMaterial;
+    [SerializeField] private GameObject popupGameObject;
 
     private ARSessionOrigin arOrigin;
     private ARRaycastManager arRaycastManager;
 
     private List<GameObject> vertices;
-
-    //private List<GameObject> anchors;
     private List<GameObject> meshes;
-    //private List<Vector3> points;
     private MeshDrawer meshDrawer;
     private LineRenderer lineRenderer;
     private GameObject meshPrefabClone;
@@ -31,6 +29,7 @@ public class TableModeController : MonoBehaviour {
     private float fixedY;
     private float tempY;
     private int selectedAnchorIndex;
+    private Popup popup;
 
     void Start() {
         arOrigin = FindObjectOfType<ARSessionOrigin>();
@@ -45,6 +44,8 @@ public class TableModeController : MonoBehaviour {
         vertices = new List<GameObject>();
         
         slider.SetActive(false);
+
+        popup = popupGameObject.GetComponent<Popup>();
     }
     
     void Update() {
@@ -118,8 +119,14 @@ public class TableModeController : MonoBehaviour {
             } else {
                 deleting = true;
 
-                Renderer renderer = vertices[selectedAnchorIndex].transform.gameObject.GetComponent<Renderer>();
-                renderer.material = deletingAnchorMaterial;
+                //Renderer renderer = vertices[selectedAnchorIndex].transform.gameObject.GetComponent<Renderer>();
+                //renderer.material = deletingAnchorMaterial;
+
+                Debug.Log("\n-----------\nprima\n---------------\n");
+                Debug.Log("\n-----------\n" + popup + "\n---------------\n");
+                Debug.Log("\n-----------\n" + Container.instance.errorDictionary["del_anchor"] + "\n---------------\n");
+                popup.ShowPopup(Container.instance.errorDictionary["del_anchor"]);
+                Debug.Log("\n-----------\ndopo\n---------------\n");
             }
         }
     }

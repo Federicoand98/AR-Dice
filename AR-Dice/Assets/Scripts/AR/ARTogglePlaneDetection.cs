@@ -13,16 +13,6 @@ public class ARTogglePlaneDetection : MonoBehaviour {
     }
 
     public void EnablePlaneDetection(bool enabled) {
-        /*
-        planeManager.enabled = !planeManager.enabled;
-
-        if(planeManager.enabled) {
-            SetAllPlanesActive(true);
-        } else {
-            SetAllPlanesActive(false);
-        }
-        */
-
         if(enabled) {
             planeManager.enabled = true;
         } else {
