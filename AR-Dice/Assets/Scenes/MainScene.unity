@@ -6347,7 +6347,9 @@ GameObject:
   - component: {fileID: 388525032}
   - component: {fileID: 388525033}
   - component: {fileID: 388525034}
+  - component: {fileID: 388525037}
   - component: {fileID: 388525035}
+  - component: {fileID: 388525036}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -6439,6 +6441,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc1999ca82024a30af97ebc778642c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &388525036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388525029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c88bc90bdc354517ab4ae49c96a68bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placedPrefabs:
+  - {fileID: 106766, guid: 6aa67f622cbf56845adce02fd1b448c4, type: 3}
+  - {fileID: 152936, guid: 2942722b4da6c9e4689c5e8ee4f94055, type: 3}
+  - {fileID: 108274, guid: f30b04b488e907b4a88bf0e13b603528, type: 3}
+  - {fileID: 129154, guid: 4cbd23b3563dcc44ab5953c60c8f61a6, type: 3}
+  - {fileID: 129532, guid: 94e0036eb54fdb4438e1f4276e4f6abe, type: 3}
+  activeColor: {r: 1, g: 0, b: 0, a: 1}
+  inactiveColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  arCamera: {fileID: 22732920}
+--- !u!114 &388525037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388525029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedLibrary: {fileID: 11400000, guid: abf4d665a3f3546ec9d530c168dd080a,
+    type: 2}
+  m_MaxNumberOfMovingImages: 2
+  m_TrackedImagePrefab: {fileID: 0}
 --- !u!1 &390467982
 GameObject:
   m_ObjectHideFlags: 0

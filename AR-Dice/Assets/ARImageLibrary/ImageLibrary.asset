@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4923932329681097817
+  m_GuidHigh: 8696433486486000258
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 4736796603965041977
+      m_GuidHigh: 1904845794098577815
+    m_SerializedTextureGuid:
+      m_GuidLow: 17615844457640764637
+      m_GuidHigh: 11865112290590604955
+    m_Size: {x: 0.100629725, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: ARBowl
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5667152878106518762
+      m_GuidHigh: 13869848625072414367
+    m_SerializedTextureGuid:
+      m_GuidLow: 312593644174233852
+      m_GuidHigh: 11236912333995085355
+    m_Size: {x: 0.14349777, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: ARDeepDish
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4934742420560957723
+      m_GuidHigh: 12501499265121274001
+    m_SerializedTextureGuid:
+      m_GuidLow: 8394247096031561608
+      m_GuidHigh: 18150630714184500728
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: ARMug
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4953790013818297685
+      m_GuidHigh: 12347746542525905043
+    m_SerializedTextureGuid:
+      m_GuidLow: 16473860166610729552
+      m_GuidHigh: 3906017446853907721
+    m_Size: {x: 0.076875, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: ARPlate
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5241713913986974361
+      m_GuidHigh: 4596756240761453494
+    m_SerializedTextureGuid:
+      m_GuidLow: 7228783694049253787
+      m_GuidHigh: 14761851434160370747
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: ARTeacup
+    m_Texture: {fileID: 0}
