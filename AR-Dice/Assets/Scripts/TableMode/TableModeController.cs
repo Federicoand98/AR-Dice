@@ -122,11 +122,7 @@ public class TableModeController : MonoBehaviour {
                 //Renderer renderer = vertices[selectedAnchorIndex].transform.gameObject.GetComponent<Renderer>();
                 //renderer.material = deletingAnchorMaterial;
 
-                Debug.Log("\n-----------\nprima\n---------------\n");
-                Debug.Log("\n-----------\n" + popup + "\n---------------\n");
-                Debug.Log("\n-----------\n" + Container.instance.errorDictionary["del_anchor"] + "\n---------------\n");
                 popup.ShowPopup(Container.instance.errorDictionary["del_anchor"]);
-                Debug.Log("\n-----------\ndopo\n---------------\n");
             }
         }
     }

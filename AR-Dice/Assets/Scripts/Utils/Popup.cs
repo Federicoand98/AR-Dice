@@ -13,6 +13,8 @@ public class Popup : MonoBehaviour {
         _canvasGroup = GetComponent<CanvasGroup>();
         _textMeshPro = gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
+        _textMeshPro.SetText("");
+
         LeanTween.alphaCanvas(_canvasGroup, 0f, 0f);
     }
 
@@ -21,9 +23,7 @@ public class Popup : MonoBehaviour {
     }
 
     public void ShowPopup(string text) {
-        Debug.Log("\n----------\nstring: " + text + "\n-----------\n");
         _textMeshPro.SetText(text);
-        Debug.Log("\n----------\ntmp: " + _textMeshPro.text + "\n-----------\n");
         LeanTween.alphaCanvas(_canvasGroup, 0.5f, 1f);
         StartCoroutine(DissolvePopup());
     }

@@ -24,6 +24,7 @@ public class Container : MonoBehaviour {
 
     [SerializeField] public ThrowMode throwMode;
     [SerializeField] public List<GameObject> dice;
+    [SerializeField] public List<GameObject> trackedObjects;
     [SerializeField] public List<Sprite> diceSprites;
     [SerializeField] public List<Sprite> gameModesSprites;
     [SerializeField] public List<Sprite> tableModeSprites;

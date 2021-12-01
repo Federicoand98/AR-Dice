@@ -32,12 +32,6 @@ public class ARImageTracking : MonoBehaviour
     private ARTrackedImageManager trackedImageManager;
     private GameObject prefabContainer;
 
-
-    //new
-    private Button place;
-
-    //[SerializeField] private PlacementObject[] placedObjects;
-
     [SerializeField]
     private Color activeColor = Color.red;
 
@@ -57,69 +51,8 @@ public class ARImageTracking : MonoBehaviour
     private GameObject lasttrovato = null;
     private int i = 0;
 
-    private void Update()
-    {
-
-        if (Input.touchCount > 0)
-        {
-            Touch t = Input.GetTouch(0);
-
-            if (t.phase == TouchPhase.Began)
-            {
-                Vector2 p = t.position;
-                
-                Debug.Log($"TOCCO RILEVATO");
-                Ray ray = arCamera.ScreenPointToRay(t.position);
-                RaycastHit hitObject;
-                if (Physics.Raycast(ray, out hitObject))
-                {
-                    Debug.Log($"OGGETTO COLPITO");
-                    trovato = null;
-
-                    Transform selected = hitObject.transform;
-
-                    Debug.Log($"RAY NAME: {hitObject.transform.name} --- RAY POSITION");
-
-
-                    foreach (GameObject go in fixedPrefabs)
-                    {
-                        if (go.Equals(hitObject.transform.gameObject))
-                            trovato = go;
-                        Debug.Log($"TROVATO");
-                    }
-                    
-
-                    if (trovato != null)
-                    {
-                        Debug.Log($"DENTRO TROVATO");
-                        //PlacementObject placementObject = hitObject.transform.GetComponent<PlacementObject>();
-                        MeshRenderer meshRenderer = trovato.GetComponent<MeshRenderer>();
-                        meshRenderer.material.color = activeColor;
-                        if (lasttrovato != null)
-                        {
-                            MeshRenderer meshRenderer2 = lasttrovato.GetComponent<MeshRenderer>();
-                            meshRenderer2.material.color = inactiveColor;
-                        }
-                        lasttrovato = trovato;
-                    }
-                    else
-                    {
-                        GameObject goClone = Instantiate(spawnedPrefabs[selected.name], selected.position, selected.rotation);
-                        fixedPrefabs.Add(goClone);
-                        /*
-                        goClone.transform.parent = prefabContainer.transform;
-                        goClone.name = "set" + (i + 1);*/
-                        Debug.Log($"CLONE: {goClone.name}");
-                    }
-
-                        //GameObject prova = hitObject.transform.gameObject;
-                        //Instantiate(prova, prova.)
-                        Debug.Log($"PROVA GAMEOBJECT: {selected.name}");
-                    }
-                
-            }
-        }
-
+    private void Update() {
+        
     }
 
     private void Awake()
@@ -162,6 +95,7 @@ public class ARImageTracking : MonoBehaviour
 
         foreach (ARTrackedImage trackedImage in eventArgs.removed)
         {
+            Destroy(spawnedPrefabs[trackedImage.name]);
             spawnedPrefabs.Remove(trackedImage.name);
         }
     }
