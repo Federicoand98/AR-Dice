@@ -1517,7 +1517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 1526}
+  m_AnchoredPosition: {x: 0, y: 1550}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &77102785
@@ -4123,7 +4123,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: -700}
-  m_SizeDelta: {x: -100, y: 0}
+  m_SizeDelta: {x: -89.12866, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &250549374
 MonoBehaviour:
@@ -13847,6 +13847,7 @@ MonoBehaviour:
   themes: {fileID: 6937034228041596117}
   modTheme: {fileID: 2140124038}
   help: {fileID: 98756239}
+  popupGameObject: {fileID: 811514328}
 --- !u!1 &838258242
 GameObject:
   m_ObjectHideFlags: 0

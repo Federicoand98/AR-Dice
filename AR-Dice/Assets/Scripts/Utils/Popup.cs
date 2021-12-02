@@ -24,13 +24,12 @@ public class Popup : MonoBehaviour {
 
     public void ShowPopup(string text) {
         _textMeshPro.SetText(text);
-        LeanTween.alphaCanvas(_canvasGroup, 0.5f, 1f);
+        LeanTween.alphaCanvas(_canvasGroup, 0.8f, 1f);
         StartCoroutine(DissolvePopup());
     }
 
     private IEnumerator DissolvePopup() {
         yield return new WaitForSeconds(3);
         LeanTween.alphaCanvas(_canvasGroup, 0f, 1f);
-        _textMeshPro.SetText("");
     }
 }

@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour {
     private Image currentButtonImage;
     private Image tableButtonImage;
     private Image throwButtonImage;
+    private Popup popup;
 
     private int currentDie;
     private int tempResult = 0;
@@ -73,6 +74,8 @@ public class GameController : MonoBehaviour {
         previousButtonImage = prevButton.transform.GetChild(0).gameObject.GetComponent<Image>();
         nextButtonImage = nextButton.transform.GetChild(0).gameObject.GetComponent<Image>();
         currentButtonImage = currButton.transform.GetChild(0).gameObject.GetComponent<Image>();
+
+        popup = popupGameObject.GetComponent<Popup>();
         
         swipeModeController = new SwipeModeController();
         fallingModeController = new FallingModeController();
@@ -276,8 +279,8 @@ public class GameController : MonoBehaviour {
                 Container.instance.throwMode = ThrowMode.FALLING;
                 SetupFallingDices();
             } else {
-                // popup
-                // prima devi costruire i muri oppure distruggere tutto
+                if(Container.instance.tableMeshes.Count == 1)
+                    popup.ShowPopup(Container.instance.errorDictionary["not_builded"]);
 
                 for(int i = Container.instance.tableMeshes.Count - 1; i >= 0; i--) {
                     Destroy(Container.instance.tableMeshes[i]);

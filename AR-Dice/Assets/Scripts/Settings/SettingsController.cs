@@ -15,6 +15,7 @@ public class SettingsController : MonoBehaviour {
     [SerializeField] public GameObject themes;
     [SerializeField] public GameObject modTheme;
     [SerializeField] public GameObject help;
+    [SerializeField] public GameObject popupGameObject;
 
     private List<Preset> presetList = null;
     private List<Theme> themesList = null;
@@ -35,6 +36,7 @@ public class SettingsController : MonoBehaviour {
     private float touchStartTime;
     private float touchThreshold = .5f;
     private Touch currTouch;
+    private Popup popup;
 
     void Start() {
         presets.SetActive(false);
@@ -56,6 +58,8 @@ public class SettingsController : MonoBehaviour {
 
         presetTouched = -1;
         themeTouched = -1;
+
+        popup = popupGameObject.GetComponent<Popup>();
     }
     
     private void LoadFiles() {
@@ -203,7 +207,7 @@ public class SettingsController : MonoBehaviour {
             modifyPresetNumbersTexts[k].SetText(presetList[modifyPresNumb].GetIndex(k).ToString());
         }
         else {
-            // popup error
+            popup.ShowPopup(Container.instance.errorDictionary["max_die"]);
         }
     }
 
@@ -212,7 +216,7 @@ public class SettingsController : MonoBehaviour {
             modifyPresetNumbersTexts[k].SetText(presetList[modifyPresNumb].GetIndex(k).ToString());
         }
         else {
-            // popup error
+            popup.ShowPopup(Container.instance.errorDictionary["min_die"]);
         }
     }
     

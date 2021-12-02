@@ -18,6 +18,10 @@ public class Container : MonoBehaviour {
 
         instance = this;
         errorDictionary.Add("del_anchor", "Tap again to delete the anchor");
+        errorDictionary.Add("min_anchor","You need at least 3 anchors to build");
+        errorDictionary.Add("not_builded","You have to build before saving");
+        errorDictionary.Add("max_die","Preset max die number reached");
+        errorDictionary.Add("min_die","Die number must be positive");
     }
 
     #endregion

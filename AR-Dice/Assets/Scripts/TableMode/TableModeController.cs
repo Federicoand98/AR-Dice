@@ -42,7 +42,7 @@ public class TableModeController : MonoBehaviour {
         meshDrawer = new MeshDrawer();
         meshes = new List<GameObject>();
         vertices = new List<GameObject>();
-        
+
         slider.SetActive(false);
 
         popup = popupGameObject.GetComponent<Popup>();
@@ -144,7 +144,7 @@ public class TableModeController : MonoBehaviour {
             lineRenderer.positionCount = vertices.Count + 1;
             lineRenderer.SetPosition(vertices.Count + 1, vertices[0].transform.position);
         } else {
-            // show error popup
+            popup.ShowPopup(Container.instance.errorDictionary["min_anchor"]);
             return;
         }
 
