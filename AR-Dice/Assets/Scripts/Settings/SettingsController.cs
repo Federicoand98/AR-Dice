@@ -10,6 +10,7 @@ public class SettingsController : MonoBehaviour {
 
     private PersistanceController persistanceController;
     
+    [SerializeField] public GameObject slidingMenu;
     [SerializeField] public GameObject presets;
     [SerializeField] public GameObject modPreset;
     [SerializeField] public GameObject themes;
@@ -39,6 +40,7 @@ public class SettingsController : MonoBehaviour {
     private Popup popup;
 
     void Start() {
+        slidingMenu.SetActive(true);
         presets.SetActive(false);
         modPreset.SetActive(false);
         themes.SetActive(false);

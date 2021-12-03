@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DieResult : MonoBehaviour {
+public class DieUtils : MonoBehaviour {
 
     [SerializeField] private Transform[] dieSides;
     [SerializeField] private GameObject hitParticle;
@@ -50,7 +50,10 @@ public class DieResult : MonoBehaviour {
     }
 
     private void OnCollisionExit(Collision other) {
-        availableResult = false;    
+        availableResult = false;
+        if (beamInstantiated) {
+            Destroy(beamFX);
+        }
     }
 
     private void OnDestroy() {

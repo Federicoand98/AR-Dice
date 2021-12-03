@@ -13842,6 +13842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eaf124e59aa24252b281bce28d7be3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slidingMenu: {fileID: 1538127092}
   presets: {fileID: 1871129215}
   modPreset: {fileID: 1544383236}
   themes: {fileID: 6937034228041596117}
@@ -22726,7 +22727,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DiceMode: {fileID: 575969261}
-  SlidingMenu: {fileID: 1538127092}
 --- !u!1 &1515729814
 GameObject:
   m_ObjectHideFlags: 0
@@ -30873,6 +30873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855c6d6b412b744dd9a712b12e02f4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceMode: {fileID: 575969261}
   prevButton: {fileID: 223974228}
   currButton: {fileID: 1114040582}
   nextButton: {fileID: 40919616}

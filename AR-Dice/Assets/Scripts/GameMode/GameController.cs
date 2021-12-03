@@ -8,6 +8,7 @@ using UnityEngine.XR.ARFoundation;
 
 public class GameController : MonoBehaviour {
 
+    [SerializeField] private GameObject diceMode;
     [SerializeField] private Button prevButton;
     [SerializeField] private Button currButton;
     [SerializeField] private Button nextButton;
@@ -52,6 +53,8 @@ public class GameController : MonoBehaviour {
     private bool throwable = true;
 
     void Start() {
+        diceMode.SetActive(true);
+        
         arOrigin = FindObjectOfType<ARSessionOrigin>();
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
         arTogglePlaneDetection = sessionOrigin.GetComponent<ARTogglePlaneDetection>();
@@ -316,7 +319,7 @@ public class GameController : MonoBehaviour {
 
     private void CheckDieResult() {
         if(Container.instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
-            DieResult dieResult = instantiatedDie.GetComponent<DieResult>();
+            DieUtils dieResult = instantiatedDie.GetComponent<DieUtils>();
 
             if(dieResult.availableResult) {
                 SetDieResult(dieResult);
@@ -324,11 +327,11 @@ public class GameController : MonoBehaviour {
         } else if(Container.instance.throwMode == ThrowMode.FALLING) {
 
             if(currentDie == dice.Count) {
-                List<DieResult> results = presetInstantiatedDice.Select(d => d.GetComponent<DieResult>()).ToList();
+                List<DieUtils> results = presetInstantiatedDice.Select(d => d.GetComponent<DieUtils>()).ToList();
 
                 SetDiceResults(results);
             } else {
-                DieResult dieResult = instantiatedDie.GetComponent<DieResult>();
+                DieUtils dieResult = instantiatedDie.GetComponent<DieUtils>();
 
                 if(dieResult.availableResult) {
                     SetDieResult(dieResult);
@@ -337,7 +340,7 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    private void SetDieResult(DieResult dieResult) {
+    private void SetDieResult(DieUtils dieResult) {
         if(dieResult.result != tempResult) {
             resultView.SetActive(true);
             LeanTween.alphaCanvas(resultCanvasGroup, 1f, 0f);
@@ -349,11 +352,11 @@ public class GameController : MonoBehaviour {
         tempResult = dieResult.result;
     }
 
-    private void SetDiceResults(List<DieResult> results) {
+    private void SetDiceResults(List<DieUtils> results) {
         int totalResult = 0;
         bool available = false;
 
-        foreach(DieResult result in results) {
+        foreach(DieUtils result in results) {
             totalResult += result.result;
 
             if(result.availableResult) {
