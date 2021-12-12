@@ -10,8 +10,9 @@ public class FallingModeController : MonoBehaviour {
 
     public GameObject DropDie(GameObject currentDie) {
         GameObject res = null;
+        float y = Container.instance.pointerPosition.position.y + 1.5f;
 
-        Vector3 v = new Vector3(Container.instance.pointerPosition.position.x, 1f, Container.instance.pointerPosition.position.z);
+        Vector3 v = new Vector3(Container.instance.pointerPosition.position.x, y, Container.instance.pointerPosition.position.z);
         Vector3 torque = new Vector3();
 
         torque.x = Random.Range(-200, 200);
@@ -30,12 +31,13 @@ public class FallingModeController : MonoBehaviour {
 
     public List<GameObject> DropPreset(Preset preset) {
         List<GameObject> res = new List<GameObject>();
+        float y = Container.instance.pointerPosition.position.y + 1.5f;
 
         for(int i = 0; i < Container.instance.dice.Count; i++) {
             for(int j = 0; j < preset.GetIndex(i); j++) {
                 float dRange = 0.002f * (1 + j/5);
                 float hRange = 0.08f * (1 + j/5);
-                Vector3 v = new Vector3(Container.instance.pointerPosition.position.x + Random.Range(-dRange, dRange), 1f + Random.Range(-hRange, hRange), 
+                Vector3 v = new Vector3(Container.instance.pointerPosition.position.x + Random.Range(-dRange, dRange), y + Random.Range(-hRange, hRange), 
                                 Container.instance.pointerPosition.position.z + Random.Range(-dRange, dRange));
 
                 Vector3 torque = new Vector3();
