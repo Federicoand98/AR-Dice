@@ -82,9 +82,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[Keyforge](https://www.keyforgegame.com) is a CCG where every deck is uniquely created by a special algorithm, no 2 decks are the same. This creates the need for a way to analyze and evaluate a deck based on its cards to find if it is tournament worthy.<br><br>
-This fan-made [database](https//www.decksofkeyforge.com) ceated a special set of algorithms that give a special rating to each registered deck, called SAS.<br>
-Fortunately, it also gives access to all the statistics and information about decks and cards in .csv files to create training and testing datasets.
 
 
 ### Built With
