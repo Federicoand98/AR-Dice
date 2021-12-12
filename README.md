@@ -145,7 +145,7 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See [`LICENSE`](https://github.com/Stikinit/keyforge-deck-evaluation/blob/main/LICENSE) for more information.
+Distributed under the MIT License. See [`LICENSE`](https://github.com/Federicoand98/AR-Dice/blob/main/LICENSE) for more information.
 
 
 
@@ -155,7 +155,7 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/Stikinit/k
 Federico Andrucci - federico.andrucci@gmail.com
 Alex Gianelli - djgiane@yahoo.it
 Lorenzo Righi -
-Project Link: [https://github.com/Stikinit/keyforge-deck-evaluation](https://github.com/Stikinit/keyforge-deck-evaluation)
+Project Link: [https://github.com/Federicoand98/AR-Dice](https://github.com/Federicoand98/AR-Dice)
 
 
 
