@@ -42,7 +42,7 @@
     ARDice is an augmented reality application that allows you to roll dice. 
     <br /> 
     <br />
-    <a href="">In-Depth Document (Italian)</a>
+    <a href="https://github.com/Federicoand98/AR-Dice/ARDice_ARelazione.pdf">In-Depth Document (Italian)</a>
     ·
     <a href="https://github.com/Federicoand98/AR-Dice/issues">Report Bug</a>
     ·
