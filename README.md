@@ -180,11 +180,9 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/Federicoan
 <!-- CONTACT -->
 ## Contact
 
-Federico Andrucci - federico.andrucci@gmail.com
-
-Alex Gianelli - djgiane@yahoo.it
-
-Lorenzo Righi -
+Federico Andrucci - federico.andrucci@gmail.com <br>
+Alex Gianelli - djgiane@yahoo.it <br>
+Lorenzo Righi - <br>
 
 Project Link: [https://github.com/Federicoand98/AR-Dice](https://github.com/Federicoand98/AR-Dice)
 
