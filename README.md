@@ -35,9 +35,7 @@
 <p align="center">
   <a href="https://github.com/Federicoand98/AR-Dice">
   </a>
-
   <h1 align="center">ARDice</h1>
-
   <p align="center">
     ARDice is an augmented reality application that allows you to roll dice. 
     <br /> 
@@ -81,36 +79,50 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<b>ARDice</b> is an <b>augmented reality application</b> that allows you to roll dice.
+**ARDice** is an **augmented reality application** that allows you to roll dice.
 
-<b>GAME MODE:<b>
+### Game Mode:
 This is the default mode in which the application is started up, in which it is possible to roll the dice very simply. In this mode, the Augmented Reality engine continuously detects surfaces and walls, therefore vertical and horizontal planes, making them interact with the objects in play.
 In Game Mode there are 2 launch modes:
-  1. <b>Swipe to Throw</b>: the die is thrown by swiping it, and then the die completes a parabola that starts from the lower part of the smartphone display and arrives in the AR environment
-  2. <b>Falling Die</b>: in this mode there will be a pointer on the plane, whose position is given by an estimate of the depth. Pressing the large button at the bottom center will make it fall vertically in proximity to the pointer.
+  1. **Swipe to Throw**: the die is thrown by swiping it, and then the die completes a parabola that starts from the lower part of the smartphone display and arrives in the AR environment
+  2. **Falling Die**: in this mode there will be a pointer on the plane, whose position is given by an estimate of the depth. Pressing the large button at the bottom center will make it fall vertically in proximity to the pointer.
 
 To change launch mode you need to use the button at the top center.
 It is also possible to change the dice to be thrown using the appropriate buttons positioned at the bottom, on the sides of the launch key.
 
-<b>TABLE MODE:</b>
+<table style="border: none">
+  <tr>
+    <td>Swipe to throw mode</td>
+    <td>Falling Dice mode</td>
+  </tr>
+  <tr>
+    <td width="20%"><img src="imgs/swipe.gif"/></td>
+    <td width="20%"><img src="imgs/falling.gif"/></td>
+  </tr>
+</table>
+
+### Table Mode:
 The Table Mode is an advanced mode that allows you to build your own horizontal plane at will.
 This mode is accessible by pressing the key at the top right.
 As soon as TableMode is enabled, all automatically constructed plans will be destroyed.
 In this way the user, through a pointer positioned based on an estimate of depth and surfaces,
 He can select the vertices of the surface he wants to build, and once this is done, clicking the button at the bottom center will finalize the currently constructed floor by creating walls around the perimeter.
 It is also possible to move a vertex by simply clicking on it and then it is possible to confirm it by pressing the add vertex button.
-  - <b>Build:</b> button to build walls, clickable only if there are at least 3 points
-  - <b>+:</b> key to add a vertex
-  - <b>-:</b> key to remove a vertex, double tap to confirm
-  - <b>Trash:</b> key to delete the newly built surface
-  - <b>Save:</b> button to save the newly built floor and return to game mode, if the walls have not been built it is not clickable
+  - **Build:** button to build walls, clickable only if there are at least 3 points
+  - **+:** key to add a vertex
+  - **-:** key to remove a vertex, double tap to confirm
+  - **Trash:** key to delete the newly built surface
+  - **Save:** button to save the newly built floor and return to game mode, if the walls have not been built it is not clickable
 
-<b>PRESETS:</b>
+<center>
+<img src="imgs/table.gif" align="center"/>
+</center>
+
+### Presets:
 You can change and save your presets to be used in falling dice mode.
 
-<b>THEMES:</b>
+### Themes:
 This settings page can let you modify the colors of your dice. Tap the number to swich from the number to the die color.
-
 
 ### Built With
 
