@@ -36,6 +36,7 @@
   <a href="https://github.com/Federicoand98/AR-Dice">
   </a>
   <h1 align="center">ARDice</h1>
+  <img src="https://github.com/Federicoand98/AR-Dice/blob/ardice-main/imgs/LoadLogo.png"/>
   <p align="center">
     ARDice is an augmented reality application that allows you to roll dice. 
     <br /> 
@@ -214,6 +215,6 @@ Project Link: [https://github.com/Federicoand98/AR-Dice](https://github.com/Fede
 [issues-shield]: https://img.shields.io/github/issues/Federicoand98/AR-Dice.svg?style=for-the-badge
 [issues-url]: https://github.com/Federicoand98/AR-Dice/issues
 [license-shield]: https://img.shields.io/github/license/Federicoand98/AR-Dice.svg?style=for-the-badge
-[license-url]: https://github.com/Stikinit/keyforge-deck-evaluation/blob/main/LICENSE
+[license-url]: https://github.com/Federicoand98/AR-Dice/blob/ardice-main/LICENSE
 [github-shield]: https://img.shields.io/github/followers/Federicoand98.svg?style=social&label=Follow
 [github-url]: https://github.com/Federicoand98
