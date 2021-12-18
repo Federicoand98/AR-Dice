@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6539,11 +6539,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placedPrefabs:
-  - {fileID: 106766, guid: 6aa67f622cbf56845adce02fd1b448c4, type: 3}
   - {fileID: 152936, guid: 2942722b4da6c9e4689c5e8ee4f94055, type: 3}
+  - {fileID: 106766, guid: 6aa67f622cbf56845adce02fd1b448c4, type: 3}
   - {fileID: 108274, guid: f30b04b488e907b4a88bf0e13b603528, type: 3}
   - {fileID: 129154, guid: 4cbd23b3563dcc44ab5953c60c8f61a6, type: 3}
   - {fileID: 129532, guid: 94e0036eb54fdb4438e1f4276e4f6abe, type: 3}
+  - {fileID: 1894143821557010, guid: c22c18d3a6d564e4ca5a4185a1f26b5d, type: 3}
   activeColor: {r: 1, g: 0, b: 0, a: 1}
   inactiveColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   arCamera: {fileID: 22732920}
@@ -22696,7 +22697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efec1226ba8747b18c37f2ad8db7636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DiceMode: {fileID: 575969261}
 --- !u!1 &1515729814
 GameObject:
   m_ObjectHideFlags: 0

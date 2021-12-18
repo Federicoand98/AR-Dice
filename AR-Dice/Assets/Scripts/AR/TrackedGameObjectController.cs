@@ -25,6 +25,9 @@ public class TrackedGameObjectController : MonoBehaviour {
     private float scaleFactorY = 0;
     private bool valueChanged = false;
 
+    private GameObject selectedPref;
+    private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
+
     void Start() {
         fixedObjectList = new List<GameObject>();
         vSlider = sliders.transform.GetChild(0).gameObject.GetComponent<Slider>();
@@ -35,47 +38,83 @@ public class TrackedGameObjectController : MonoBehaviour {
         SpawnFixedClone();
     }
 
-    private void SpawnFixedClone() {
-        if (Input.touchCount > 0) {
+    private void SpawnFixedClone()
+    {
+        if (Input.touchCount > 0)
+        {
             Touch t = Input.GetTouch(0);
 
-            if (t.phase == TouchPhase.Began) {
+            if (t.phase == TouchPhase.Began)
+            {
                 Vector2 p = t.position;
-                
+
                 Ray ray = arCamera.ScreenPointToRay(t.position);
                 RaycastHit hitObject;
 
-                if (Physics.Raycast(ray, out hitObject)) {
+                if (Physics.Raycast(ray, out hitObject))
+                {
                     trovato = null;
 
                     Transform selected = hitObject.transform;
                     Debug.Log(selected.name);
 
-                    foreach (GameObject go in fixedObjectList) {
-                        if (go.Equals(hitObject.transform.gameObject)) {
+                    foreach (GameObject go in fixedObjectList)
+                    {
+                        if (go.Equals(hitObject.transform.gameObject))
+                        {
                             trovato = go;
                         }
                     }
-                    
-                    if (trovato != null) {
+
+                    if (trovato != null)
+                    {
                         MeshRenderer meshRenderer = trovato.GetComponent<MeshRenderer>();
-                        meshRenderer.material.color = activeColor;
+                        MeshRenderer meshRenderer2 = null;
+                        if (lasttrovato != null) 
+                            meshRenderer2 = lasttrovato.GetComponent<MeshRenderer>();
 
                         sliders.SetActive(true);
 
                         ResetSlider(trovato.transform.localScale);
-
-                        if (lasttrovato != null) {
-                            MeshRenderer meshRenderer2 = lasttrovato.GetComponent<MeshRenderer>();
-                            meshRenderer2.material.color = inactiveColor;
+                        if (lasttrovato == trovato)
+                        {
+                            if (meshRenderer.material.color == inactiveColor)
+                            {
+                                meshRenderer.material.color = activeColor;
+                                sliders.SetActive(true);
+                            }
+                            else
+                            {
+                                meshRenderer.material.color = inactiveColor;
+                                sliders.SetActive(false);
+                            }
+                        }
+                        else
+                        {
+                            meshRenderer.material.color = activeColor;
+                            sliders.SetActive(true);
+                            if (lasttrovato != null)
+                                meshRenderer2.material.color = inactiveColor;
                         }
 
                         lasttrovato = trovato;
-                    } else {
+                    }
+                    else
+                    {
+                        if (lasttrovato != null)
+                        {
+                            MeshRenderer meshRenderer2 = lasttrovato.GetComponent<MeshRenderer>();
+                            meshRenderer2.material.color = inactiveColor;
+                            lasttrovato = null;
+                        }
+
+
                         GameObject temp = null;
 
-                        foreach (GameObject g in Container.instance.trackedObjects) {
-                            if(g.transform.name.Equals(selected.name)) {
+                        foreach (GameObject g in Container.instance.trackedObjects)
+                        {
+                            if (g.transform.name.Equals(selected.name))
+                            {
                                 temp = g;
                                 Debug.Log(temp);
                                 break;
@@ -87,19 +126,7 @@ public class TrackedGameObjectController : MonoBehaviour {
 
                         sliders.SetActive(false);
                     }
-                } /* else if(!valueChanged) {
-                    sliders.SetActive(false);
-                    
-                    if(trovato != null && lasttrovato != null) {
-                        MeshRenderer meshRenderer = trovato.GetComponent<MeshRenderer>();
-                        meshRenderer.material.color = activeColor;
-                        MeshRenderer meshRenderer2 = lasttrovato.GetComponent<MeshRenderer>();
-                        meshRenderer2.material.color = inactiveColor;
-
-                        trovato = null;
-                        lasttrovato = null;
-                    }
-                } */
+                } 
             }
         }
     }
@@ -137,4 +164,6 @@ public class TrackedGameObjectController : MonoBehaviour {
             vSlider.value = (scale.y - 1) / 0.01f;
         }
     }
+   
 }
+

@@ -51,8 +51,9 @@ public class ARImageTracking : MonoBehaviour
     private GameObject lasttrovato = null;
     private int i = 0;
 
-    private void Update() {
-        
+    private void Update()
+    {
+
     }
 
     private void Awake()
@@ -63,6 +64,8 @@ public class ARImageTracking : MonoBehaviour
         foreach (GameObject prefab in placedPrefabs)
         {
             GameObject newPrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+            if(prefab.name == "ARBottle")
+                newPrefab.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             newPrefab.SetActive(false);
             newPrefab.name = prefab.name;
             spawnedPrefabs.Add(prefab.name, newPrefab);
@@ -105,6 +108,27 @@ public class ARImageTracking : MonoBehaviour
 
         string name = trackedImage.referenceImage.name;
         Vector3 position = trackedImage.transform.position;
+        Quaternion rotation = trackedImage.transform.rotation;
+
+        GameObject prefab = spawnedPrefabs[name];
+        prefab.SetActive(true);
+        prefab.transform.position = position;
+        prefab.transform.rotation = rotation;
+
+        foreach (GameObject go in spawnedPrefabs.Values)
+        {
+            if (go.name != name)
+            {
+                //go.SetActive(false);
+            }
+        }
+    }
+
+    private void DeleteImage(ARTrackedImage trackedImage)
+    {
+
+        string name = trackedImage.referenceImage.name;
+        Vector3 position = new Vector3 (0.0f, 100.0f, 0.0f);
         Quaternion rotation = trackedImage.transform.rotation;
 
         GameObject prefab = spawnedPrefabs[name];

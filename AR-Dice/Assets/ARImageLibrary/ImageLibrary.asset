@@ -23,7 +23,7 @@ MonoBehaviour:
       m_GuidHigh: 11865112290590604955
     m_Size: {x: 0.100629725, y: 0.1}
     m_SpecifySize: 1
-    m_Name: ARBowl
+    m_Name: ARMug
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5667152878106518762
@@ -33,7 +33,7 @@ MonoBehaviour:
       m_GuidHigh: 11236912333995085355
     m_Size: {x: 0.14349777, y: 0.1}
     m_SpecifySize: 1
-    m_Name: ARDeepDish
+    m_Name: ARBowl
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4934742420560957723
@@ -43,7 +43,7 @@ MonoBehaviour:
       m_GuidHigh: 18150630714184500728
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: ARMug
+    m_Name: ARDeepDish
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4953790013818297685
@@ -64,4 +64,14 @@ MonoBehaviour:
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: ARTeacup
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5344069822562169391
+      m_GuidHigh: 3364298637312388481
+    m_SerializedTextureGuid:
+      m_GuidLow: 16065690083895273378
+      m_GuidHigh: 11875206539420112219
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: ARBottle
     m_Texture: {fileID: 0}
