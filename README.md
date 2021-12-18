@@ -28,16 +28,10 @@
 [![MIT License][license-shield]][license-url]
 [![GitHub followers][github-shield]][github-url]
 
-<style>
-  .img-container {
-    text-align: center;
-  }
-</style>
-
 
 <!-- PROJECT LOGO -->
 <center>
-  <img src="https://github.com/Federicoand98/AR-Dice/blob/ardice-main/imgs/LoadLogo.png" alt="logo" height="600" width="400"
+  <img src="https://github.com/Federicoand98/AR-Dice/blob/ardice-main/imgs/LoadLogo.png" alt="logo" height="500" width="400"
 </center   
   
 <br />
