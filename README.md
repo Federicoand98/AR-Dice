@@ -36,8 +36,8 @@
   <a href="https://github.com/Federicoand98/AR-Dice">
   </a>
   <h1 align="center">ARDice</h1>
-  <img src="https://github.com/Federicoand98/AR-Dice/blob/ardice-main/imgs/LoadLogo.png" style="width:500px;height:600px;" align="middle"/>
   <p align="center">
+    <img src="https://github.com/Federicoand98/AR-Dice/blob/ardice-main/imgs/LoadLogo.png" style="width:500px;height:600px;" align="middle"/>
     ARDice is an augmented reality application that allows you to roll dice. 
     <br /> 
     <br />
