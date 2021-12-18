@@ -30,9 +30,9 @@
 
 
 <!-- PROJECT LOGO -->
-<center>
+<p align="center">
   <img src="https://github.com/Federicoand98/AR-Dice/blob/ardice-main/imgs/LoadLogo.png" alt="logo" height="500" width="400"
-</center   
+</p>   
   
 <br />
 <p align="center">
