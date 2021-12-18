@@ -36,10 +36,8 @@
 
 
 <!-- PROJECT LOGO -->
-<div class="img-container">
-<img src="https://github.com/Federicoand98/AR-Dice/blob/ardice-main/imgs/LoadLogo.png" style="width:500px;height:600px;" align="middle"/>
-</div>
-
+![logo](https://github.com/Federicoand98/AR-Dice/blob/ardice-main/imgs/LoadLogo.png)
+     
 <br />
 <p align="center">
   <a href="https://github.com/Federicoand98/AR-Dice">
