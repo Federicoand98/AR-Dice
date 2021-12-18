@@ -117,9 +117,9 @@ It is also possible to move a vertex by simply clicking on it and then it is pos
   - **Trash:** key to delete the newly built surface
   - **Save:** button to save the newly built floor and return to game mode, if the walls have not been built it is not clickable
 
-<center>
+<p align="center">
 <img src="imgs/table.gif" align="center"/>
-</center>
+</p>
 
 ### Presets:
 You can change and save your presets to be used in falling dice mode.
