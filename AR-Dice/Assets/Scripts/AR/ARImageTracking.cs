@@ -63,13 +63,20 @@ public class ARImageTracking : MonoBehaviour
 
         foreach (GameObject prefab in placedPrefabs)
         {
-            GameObject newPrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
-            if(prefab.name == "ARBottle")
-                newPrefab.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            newPrefab.SetActive(false);
-            newPrefab.name = prefab.name;
-            spawnedPrefabs.Add(prefab.name, newPrefab);
-            prefabsList.Add(prefab.name, newPrefab);
+            GameObject newPrefab = null;
+            if (prefab.name == "ARBottle")
+            {
+                newPrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+                newPrefab.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            }
+            else
+            {
+                newPrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+            }
+                newPrefab.SetActive(false);
+                newPrefab.name = prefab.name;
+                spawnedPrefabs.Add(prefab.name, newPrefab);
+                prefabsList.Add(prefab.name, newPrefab);
         }
     }
 

@@ -10,6 +10,7 @@ public class TrackedGameObjectController : MonoBehaviour {
     [SerializeField] private Color activeColor = Color.red;
     [SerializeField] private Color inactiveColor = Color.white;
     [SerializeField] private GameObject sliders;
+    private Button xButton;
     [SerializeField] private float scaleXZ = 1; // change with different prefabs
     [SerializeField] private float scaleY = 1; // change with different prefabs
 
@@ -20,6 +21,7 @@ public class TrackedGameObjectController : MonoBehaviour {
     private GameObject lasttrovato = null;
     private Slider hSlider;
     private Slider vSlider;
+    private Button canButton;
 
     private float scaleFactorXZ = 0;
     private float scaleFactorY = 0;
@@ -32,6 +34,10 @@ public class TrackedGameObjectController : MonoBehaviour {
         fixedObjectList = new List<GameObject>();
         vSlider = sliders.transform.GetChild(0).gameObject.GetComponent<Slider>();
         hSlider = sliders.transform.GetChild(1).gameObject.GetComponent<Slider>();
+        xButton = GameObject.Find("XButton").GetComponent<Button>();
+        xButton.onClick.AddListener(OnButtonPressed);
+        sliders.SetActive(false);
+        xButton.gameObject.SetActive(false);
     }
 
     void Update() {
@@ -74,6 +80,7 @@ public class TrackedGameObjectController : MonoBehaviour {
                             meshRenderer2 = lasttrovato.GetComponent<MeshRenderer>();
 
                         sliders.SetActive(true);
+                        xButton.gameObject.SetActive(true);
 
                         ResetSlider(trovato.transform.localScale);
                         if (lasttrovato == trovato)
@@ -82,17 +89,20 @@ public class TrackedGameObjectController : MonoBehaviour {
                             {
                                 meshRenderer.material.color = activeColor;
                                 sliders.SetActive(true);
+                                xButton.gameObject.SetActive(true);
                             }
                             else
                             {
                                 meshRenderer.material.color = inactiveColor;
                                 sliders.SetActive(false);
+                                xButton.gameObject.SetActive(false);
                             }
                         }
                         else
                         {
                             meshRenderer.material.color = activeColor;
                             sliders.SetActive(true);
+                            xButton.gameObject.SetActive(true);
                             if (lasttrovato != null)
                                 meshRenderer2.material.color = inactiveColor;
                         }
@@ -113,18 +123,23 @@ public class TrackedGameObjectController : MonoBehaviour {
 
                         foreach (GameObject g in Container.instance.trackedObjects)
                         {
+                            Debug.Log("current g name in foreach: " + selected.name);
                             if (g.transform.name.Equals(selected.name))
                             {
                                 temp = g;
-                                Debug.Log(temp);
+                                Debug.Log("ROMPO");
                                 break;
                             }
                         }
 
+                        Debug.Log("temp nome: " + temp);
                         GameObject goClone = Instantiate(temp, selected.position, selected.rotation);
+                        if (goClone.name.Equals("ARBottle"))
+                            goClone.transform.localEulerAngles = new Vector3(goClone.transform.rotation.x, goClone.transform.rotation.y, goClone.transform.rotation.z);
                         fixedObjectList.Add(goClone);
 
                         sliders.SetActive(false);
+                        xButton.gameObject.SetActive(false);
                     }
                 } 
             }
@@ -149,6 +164,16 @@ public class TrackedGameObjectController : MonoBehaviour {
         }
 
         trovato.transform.localScale = new Vector3(trovato.transform.localScale.x, scaleFactorY * scaleY, trovato.transform.localScale.z);
+    }
+
+    public void OnButtonPressed()
+    {
+        trovato.transform.localPosition = new Vector3(trovato.transform.localScale.x, 100.0f, trovato.transform.localScale.z);
+        MeshRenderer meshRenderer = trovato.GetComponent<MeshRenderer>();
+        meshRenderer.material.color = inactiveColor;
+        trovato = null;
+        sliders.SetActive(false);
+        xButton.gameObject.SetActive(false);
     }
 
     private void ResetSlider(Vector3 scale) {
