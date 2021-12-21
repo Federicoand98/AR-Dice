@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3154,7 +3154,7 @@ MonoBehaviour:
   arCamera: {fileID: 22732920}
   activeColor: {r: 1, g: 0, b: 0, a: 1}
   inactiveColor: {r: 1, g: 1, b: 1, a: 1}
-  sliders: {fileID: 1159784589}
+  tools: {fileID: 1159784589}
   scaleXZ: 1
   scaleY: 1
 --- !u!4 &165585585
@@ -13314,7 +13314,7 @@ RectTransform:
   m_Children:
   - {fileID: 1834010863}
   m_Father: {fileID: 1157554901}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18199,7 +18199,6 @@ RectTransform:
   - {fileID: 2140124039}
   - {fileID: 98756240}
   - {fileID: 1159784590}
-  - {fileID: 1642817034}
   - {fileID: 811514333}
   m_Father: {fileID: 351790824}
   m_RootOrder: 0
@@ -18281,7 +18280,7 @@ GameObject:
   - component: {fileID: 1159784590}
   - component: {fileID: 1159784591}
   m_Layer: 5
-  m_Name: AR Object Sliders
+  m_Name: AR Object Tools
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18300,6 +18299,7 @@ RectTransform:
   m_Children:
   - {fileID: 1923259663}
   - {fileID: 1928413984}
+  - {fileID: 1642817034}
   m_Father: {fileID: 1157554901}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24638,8 +24638,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1157554901}
-  m_RootOrder: 9
+  m_Father: {fileID: 1159784590}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -24690,10 +24690,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: c9b3477be631b41daabc25aa05f3f857, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: set_name
-        m_Mode: 5
+      - m_Target: {fileID: 165585584}
+        m_TargetAssemblyTypeName: TrackedGameObjectController, Assembly-CSharp
+        m_MethodName: OnButtonPressed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -39,14 +39,17 @@ public class DieUtils : MonoBehaviour {
         Quaternion rotation = Quaternion.Euler(-90, 0, 0);
         Vector3 position = transform.position;
 
-        if (beamParticle != null && !beamInstantiated) {
+        if (beamParticle != null && !beamInstantiated && result == 20) {
             beamFX = Instantiate(beamParticle, position, rotation);
             beamInstantiated = true;
         }
 
         if (beamInstantiated) {
-            beamFX.transform.position = position;
+            if (result == 20)
+                beamFX.transform.position = position;
+            else Destroy(beamFX);
         }
+        
     }
 
     private void OnCollisionExit(Collision other) {

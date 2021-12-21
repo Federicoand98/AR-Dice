@@ -118,6 +118,8 @@ public class SettingsController : MonoBehaviour {
             }
         }
     }
+    
+    //---------------------------- PRESETS ----------------------------
 
     private void SetUpPresets() {
         GameObject items = presets.transform.GetChild(1).gameObject;
@@ -232,6 +234,8 @@ public class SettingsController : MonoBehaviour {
         SetUpPresets();
     }
 
+    //---------------------------- THEMES ----------------------------
+    
     public void OnThemes() {
         themes.SetActive(true);
         RectTransform rect = themes.GetComponent<RectTransform>();
@@ -326,12 +330,19 @@ public class SettingsController : MonoBehaviour {
 
     public void OnCloseModifyTheme() {
         persistanceController.SaveTheme(themesList[modifyThemeNumb], modifyThemeNumb+1);
-        
+
+        if (modifyThemeNumb == selectedTheme) {
+            Container.instance.activeTheme = themesList[selectedTheme];
+            Container.instance.themeChanged = true;
+        }
+
         modTheme.SetActive(false);
         modifyThemeNumb = -1;
-        
+
         SetUpThemes();
     }
+    
+    //---------------------------- HELP ----------------------------
 
     public void OnHelp() {
         help.SetActive(true);
